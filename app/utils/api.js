@@ -41,22 +41,3 @@ export async function getExperience(id) {
     return null;
   }
 }
-
-// fetch call that is working too
-// export async function getExperiences() {
-//   const url = process.env.API_URL + "experiences";
-
-//   try {
-//     const res = await fetch(url, {
-//       headers: { Authorization: "Bearer " + apiToken },
-//     });
-
-//     if (!res.ok) {
-//       throw new Error(`Erreur ${res.status}`);
-//     }
-//     return await res.json();
-//   } catch (error) {
-//     console.log("Erreur lors de la récupération des données : ", error);
-//     return null;
-//   }
-// }
