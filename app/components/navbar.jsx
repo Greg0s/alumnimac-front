@@ -15,6 +15,7 @@ const Navbar = () => {
           placeholder="blur" // blur version on load
         />
       </Link>
+      <Link href="/account">Compte</Link>
       <Link href="/experience/add">Ajouter</Link>
     </nav>
   );
