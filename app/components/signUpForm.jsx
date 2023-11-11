@@ -5,13 +5,16 @@ import { signUp } from "../utils/api";
 
 const SignUpForm = () => {
   const initialValues = {
+    firstName: "",
+    lastName: "",
     username: "",
     email: "",
     password: "",
   };
 
   const validationSchema = Yup.object({
-    username: Yup.string().required("Nom d'utilisateur requis"),
+    firstName: Yup.string().required("Prénom requis"),
+    lastName: Yup.string().required("Nom requis"),
     email: Yup.string()
       .email("Adresse e-mail invalide")
       .required("E-mail requis"),
@@ -19,7 +22,7 @@ const SignUpForm = () => {
   });
 
   const handleSubmit = async (values) => {
-    signUp(values.username, values.email, values.password)
+    signUp(values.firstName, values.lastName, values.email, values.password)
       .then((userCredential) => {
         console.log(userCredential);
       })
@@ -37,9 +40,14 @@ const SignUpForm = () => {
       >
         <Form>
           <div>
-            <label>Nom d'utilisateur</label>
-            <Field type="text" name="username" />
-            <ErrorMessage name="username" component="div" />
+            <label>Prénom</label>
+            <Field type="text" name="firstName" />
+            <ErrorMessage name="firstName" component="div" />
+          </div>
+          <div>
+            <label>Nom</label>
+            <Field type="text" name="lastName" />
+            <ErrorMessage name="lastName" component="div" />
           </div>
           <div>
             <label>E-mail</label>

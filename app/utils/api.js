@@ -48,9 +48,11 @@ export async function getExperience(id) {
 
 // Auth
 
-export async function signUp(_username, _email, _password) {
+export async function signUp(_firstName, _lastName, _email, _password) {
   const data = {
-    username: _username,
+    first_name: _firstName,
+    last_name: _lastName,
+    username: _email,
     email: _email,
     password: _password,
   };
