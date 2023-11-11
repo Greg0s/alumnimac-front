@@ -56,7 +56,6 @@ export async function signUp(_firstName, _lastName, _email, _password) {
     email: _email,
     password: _password,
   };
-  console.log(axiosInstance);
 
   try {
     const response = await axios.post(baseUrl + "auth/local/register", data);
@@ -72,20 +71,26 @@ export async function signUp(_firstName, _lastName, _email, _password) {
   }
 }
 
-// export async function signIn(username, email, password) {
-//   try {
-//     const response = await axiosInstance.get("/auth/local/register");
+export async function signIn(_email, _password) {
+  console.log(_email, _password);
+  const data = {
+    identifier: _email,
+    password: _password,
+  };
 
-//     if (response.status !== 200) {
-//       throw new Error(`Erreur ${response.status}`);
-//     }
+  try {
+    const response = await axios.post(baseUrl + "auth/local", data);
 
-//     return response.data.data;
-//   } catch (error) {
-//     console.log("Error while retrieving data: ", error);
-//     return null;
-//   }
-// }
+    if (response.status !== 200) {
+      throw new Error(`Erreur ${response.status}`);
+    }
+
+    return response.data.data;
+  } catch (error) {
+    console.log("Error while retrieving data: ", error);
+    return null;
+  }
+}
 
 // export function signOut() {
 //   const router = useRouter();
