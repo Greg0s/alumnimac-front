@@ -15,7 +15,7 @@ export default async function ExperienceList() {
             </Link>
           </div>
         ))}
-      {experiences.length === 0 && (
+      {experiences && experiences.length === 0 && (
         // image : C de l'imac tombé par terre genre un vestige antique
         <p className="text-center">
           Il y a une bonne et une mauvaise nouvelle : Tu as trouvé le C de
