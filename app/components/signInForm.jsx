@@ -3,7 +3,16 @@ import * as Yup from "yup";
 
 import { signIn } from "../utils/api";
 
+import { useContext } from "react";
+import { AuthContext } from "../utils/authContext";
+
+import { useRouter } from "next/navigation";
+
 const SignInForm = () => {
+  const router = useRouter();
+
+  const { authState, setAuthState } = useContext(AuthContext);
+
   const initialValues = {
     email: "",
     password: "",
@@ -19,7 +28,9 @@ const SignInForm = () => {
   const handleSubmit = async (values) => {
     signIn(values.email, values.password)
       .then((userCredential) => {
-        console.log(userCredential);
+        setAuthState(userCredential);
+        localStorage.setItem("token", userCredential.jwt);
+        router.push("/");
       })
       .catch((error) => {
         console.log(error);
