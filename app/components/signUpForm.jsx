@@ -1,13 +1,13 @@
-import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+
 import { signUp } from "../utils/api";
 
 const SignUpForm = () => {
   const initialValues = {
     firstName: "",
     lastName: "",
-    username: "",
+    graduationYear: "",
     email: "",
     password: "",
   };
@@ -15,6 +15,7 @@ const SignUpForm = () => {
   const validationSchema = Yup.object({
     firstName: Yup.string().required("Prénom requis"),
     lastName: Yup.string().required("Nom requis"),
+    graduationYear: Yup.number().required("Année de promo requise"),
     email: Yup.string()
       .email("Adresse e-mail invalide")
       .required("E-mail requis"),
@@ -22,7 +23,13 @@ const SignUpForm = () => {
   });
 
   const handleSubmit = async (values) => {
-    signUp(values.firstName, values.lastName, values.email, values.password)
+    signUp(
+      values.firstName,
+      values.lastName,
+      values.graduationYear,
+      values.email,
+      values.password
+    )
       .then((userCredential) => {
         console.log(userCredential);
       })
@@ -33,6 +40,7 @@ const SignUpForm = () => {
 
   return (
     <div className="sign-up-container">
+      <h1>S'inscrire</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -48,6 +56,11 @@ const SignUpForm = () => {
             <label>Nom</label>
             <Field type="text" name="lastName" />
             <ErrorMessage name="lastName" component="div" />
+          </div>
+          <div>
+            <label>Année de la promo</label>
+            <Field type="number" name="graduationYear" />
+            <ErrorMessage name="graduationYear" component="div" />
           </div>
           <div>
             <label>E-mail</label>
