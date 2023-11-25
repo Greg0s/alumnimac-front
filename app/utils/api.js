@@ -3,6 +3,8 @@ import { apiToken } from "./apiToken";
 
 const axios = require("axios");
 
+axios.defaults.withCredentials = true;
+
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 // Axios config
@@ -48,10 +50,17 @@ export async function getExperience(id) {
 
 // Auth
 
-export async function signUp(_firstName, _lastName, _email, _password) {
+export async function signUp(
+  _firstName,
+  _lastName,
+  _graduationYear,
+  _email,
+  _password
+) {
   const data = {
     first_name: _firstName,
     last_name: _lastName,
+    graduation_year: _graduationYear,
     username: _email,
     email: _email,
     password: _password,
@@ -64,7 +73,7 @@ export async function signUp(_firstName, _lastName, _email, _password) {
       throw new Error(`Erreur ${response.status}`);
     }
     console.log(response.data.data);
-    return response.data.data;
+    return response.data;
   } catch (error) {
     console.log("Error while retrieving data: ", error);
     return null;
@@ -72,7 +81,6 @@ export async function signUp(_firstName, _lastName, _email, _password) {
 }
 
 export async function signIn(_email, _password) {
-  console.log(_email, _password);
   const data = {
     identifier: _email,
     password: _password,
@@ -85,16 +93,33 @@ export async function signIn(_email, _password) {
       throw new Error(`Erreur ${response.status}`);
     }
 
-    return response.data.data;
+    return response.data;
   } catch (error) {
     console.log("Error while retrieving data: ", error);
     return null;
   }
 }
 
-// export function signOut() {
-//   const router = useRouter();
-//   localStorage.removeItem("jwt");
-//   localStorage.removeItem("username");
-//   router.push("/");
-// }
+export async function refreshToken() {
+  const data = {
+    refreshToken: localStorage.getItem("token"),
+  };
+
+  const options = {
+    "Access-Control-Allow-Credentials": true,
+    withCredentials: true,
+  };
+
+  try {
+    const response = await axios.post(baseUrl + "token/refresh", data, options);
+
+    if (response.status !== 200) {
+      throw new Error(`Erreur ${response.status}`);
+    }
+
+    return response.data;
+  } catch (error) {
+    console.log("Error while retrieving data: ", error);
+    return null;
+  }
+}
