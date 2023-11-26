@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { getExperiences } from "../utils/api";
+import "../styles/experiencesList.scss";
 
 export default async function ExperienceList() {
   let experiences = await getExperiences();
 
   return (
-    <>
+    <div class="experiences-list">
       {experiences &&
         experiences.map((experience) => (
-          <div key={experience.id} className="card my-5">
+          <div key={experience.id} className="experience">
             <Link href={`/experience/${experience.id}`}>
               <h3>{experience.attributes.exp_title}</h3>
               <p>{experience.attributes.exp_company}</p>
@@ -23,6 +24,6 @@ export default async function ExperienceList() {
           l'instant...
         </p>
       )}
-    </>
+    </div>
   );
 }
