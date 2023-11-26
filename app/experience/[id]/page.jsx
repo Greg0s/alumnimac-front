@@ -8,7 +8,7 @@ export default async function ExperienceDetails({ params }) {
   if (!experience) notFound();
 
   return (
-    <main class="experience-page">
+    <main className="experience-page">
       <div className="card">
         <h3>{experience.attributes.exp_title}</h3>
         <p>{experience.attributes.exp_description}</p>

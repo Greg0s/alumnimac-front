@@ -6,7 +6,7 @@ export default async function ExperienceList() {
   let experiences = await getExperiences();
 
   return (
-    <div class="experiences-list">
+    <div className="experiences-list">
       {experiences &&
         experiences.map((experience) => (
           <div key={experience.id} className="experience">
