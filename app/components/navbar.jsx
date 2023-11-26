@@ -1,9 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "public/logo.png";
 import Image from "next/image";
 import "../styles/navbar.scss";
 
+import { AuthContext } from "../utils/authContext";
+import { useContext } from "react";
+
 const Navbar = () => {
+  const { authState, setAuthState } = useContext(AuthContext);
+
   return (
     <nav>
       <Link href="/">
@@ -16,7 +23,7 @@ const Navbar = () => {
         />
       </Link>
       <Link href="/account">Compte</Link>
-      <Link href="/experience/add">Ajouter</Link>
+      {authState && <Link href="/experience/add">Ajouter</Link>}
     </nav>
   );
 };
