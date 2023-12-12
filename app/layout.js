@@ -10,7 +10,7 @@ export const metadata = {
   description: "Retrouvez les expériences professionnelles des IMACs.",
 };
 
-export default function RootLayout({ children }) {
+function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body className={inter.className}>
@@ -22,3 +22,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+export default RootLayout;
