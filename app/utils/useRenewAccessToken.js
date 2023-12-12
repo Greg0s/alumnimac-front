@@ -9,10 +9,7 @@ const useRenewAccessToken = (authState, setAuthState) => {
 
         setAuthState(response.jwt);
       } catch (error) {
-        console.error(
-          "Erreur lors du renouvellement du jeton d'accès :",
-          error
-        );
+        console.error("Error during token renewal: ", error);
       }
     };
 
