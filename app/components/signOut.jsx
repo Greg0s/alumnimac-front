@@ -11,6 +11,8 @@ const SignOut = () => {
 
   const signOut = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+
     setAuthState(null);
     router.push("/account");
   };

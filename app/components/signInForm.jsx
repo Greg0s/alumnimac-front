@@ -28,8 +28,9 @@ const SignInForm = () => {
   const handleSubmit = async (values) => {
     signIn(values.email, values.password)
       .then((userCredential) => {
-        setAuthState(userCredential);
+        setAuthState(userCredential.jwt);
         localStorage.setItem("token", userCredential.jwt);
+        localStorage.setItem("userId", userCredential.user.id);
         router.push("/");
       })
       .catch((error) => {
