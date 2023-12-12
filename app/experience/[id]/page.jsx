@@ -10,8 +10,8 @@ export default async function ExperienceDetails({ params }) {
   return (
     <main className="experience-page">
       <div className="card">
-        <h3>{experience.attributes.exp_title}</h3>
-        <p>{experience.attributes.exp_description}</p>
+        <h3>{experience.attributes.position}</h3>
+        <p>{experience.attributes.description}</p>
       </div>
     </main>
   );

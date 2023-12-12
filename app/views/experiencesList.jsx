@@ -5,14 +5,17 @@ import "../styles/experiencesList.scss";
 export default async function ExperienceList() {
   let experiences = await getExperiences();
 
+  // const filterdByRegion = (array) => {
+  //   return array.filter(el => el.name.common.toLowerCase().includes(query))}
+
   return (
     <div className="experiences-list">
       {experiences &&
         experiences.map((experience) => (
           <div key={experience.id} className="experience">
             <Link href={`/experience/${experience.id}`}>
-              <h3>{experience.attributes.exp_title}</h3>
-              <p>{experience.attributes.exp_company}</p>
+              <h3>{experience.attributes.position}</h3>
+              <p>{experience.attributes.company}</p>
             </Link>
           </div>
         ))}
