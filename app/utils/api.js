@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { apiToken } from "./apiToken";
+import { calcDuration } from "./functions";
 
 const axios = require("axios");
 
@@ -46,6 +47,63 @@ export async function getExperience(id) {
     console.log("Error while retrieving data: ", error);
     return null;
   }
+}
+
+export async function addExperience(experience) {
+  const userId = localStorage.getItem("userId");
+
+  let endDate = null;
+  let _duration = null;
+  if (!experience.ongoing) {
+    endDate = experience.endDate;
+    _duration = calcDuration(experience.startDate, experience.endDate);
+  }
+
+  let _compensation = 0;
+  if (experience.paid) _compensation = experience.compensation;
+
+  const data = {
+    data: {
+      position: experience.position,
+      type: experience.type,
+      company: experience.company,
+      start_date: experience.startDate,
+      ongoing: experience.ongoing,
+      end_date: endDate,
+      work_mode: experience.workMode,
+      country: experience.country,
+      city: experience.city,
+      address: experience.address,
+      paid: experience.paid,
+      compensation: _compensation,
+      domain: experience.domain,
+      not_recommended: experience.not_recommended,
+      description: experience.description,
+      author: parseInt(userId),
+      duration: _duration,
+    },
+  };
+
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    try {
+      const response = await axios.post(baseUrl + "experiences/", data, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`Erreur ${response.status}`);
+      }
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log("Error while retrieving data: ", error);
+      return null;
+    }
+  } else throw new Error(`User not connected`);
 }
 
 // Auth
