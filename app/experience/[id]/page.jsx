@@ -5,6 +5,8 @@ import "../../styles/experiencePage.scss";
 export default async function ExperienceDetails({ params }) {
   const experience = await getExperience(params.id);
 
+  const author = experience.attributes.author.data.attributes;
+
   if (!experience) notFound();
 
   return (
@@ -28,8 +30,10 @@ export default async function ExperienceDetails({ params }) {
             )}
           </div>
           <div className="name">
-            <p>Prénom Nom</p>
-            <p>IMAC XXX</p>
+            <p>
+              {author.first_name} {author.last_name}{" "}
+            </p>
+            <p>IMAC {author.graduation_year}</p>
           </div>
           <div className="dates">
             <p>{experience.attributes.start_date}</p>

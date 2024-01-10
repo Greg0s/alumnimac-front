@@ -17,11 +17,20 @@ const axiosInstance = axios.create({
   },
 });
 
+const axiosInstancePublic = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 // Experiences
 
 export async function getExperiences() {
   try {
-    const response = await axiosInstance.get("/experiences");
+    const response = await axiosInstancePublic.get(
+      "/experiences?populate=author"
+    );
 
     if (response.status !== 200) {
       throw new Error(`Erreur ${response.status}`);
@@ -36,7 +45,9 @@ export async function getExperiences() {
 
 export async function getExperience(id) {
   try {
-    const response = await axiosInstance.get("/experiences/" + id);
+    const response = await axiosInstancePublic.get(
+      "/experiences/" + id + "?populate=author"
+    );
 
     if (response.status !== 200) {
       notFound();
