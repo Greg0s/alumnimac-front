@@ -1,12 +1,9 @@
-import ExperienceList from "./views/experiencesList";
-import { Suspense } from "react";
+import HomePage from "./views/homePage";
 
-export default function Home() {
+export default function Home({ searchParams }) {
   return (
     <main>
-      <Suspense fallback={<p>Loading</p>}>
-        <ExperienceList />
-      </Suspense>
+      <HomePage searchParams={searchParams} />
     </main>
   );
 }

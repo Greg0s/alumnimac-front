@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { getExperiences } from "../utils/api";
+// import { getExperiences } from "../utils/api";
 import "../styles/experiencesList.scss";
+import Image from "next/image";
 
-export default async function ExperienceList() {
-  let experiences = await getExperiences();
-
+export default function ExperienceList({ experiences }) {
   // const filterdByRegion = (array) => {
   //   return array.filter(el => el.name.common.toLowerCase().includes(query))}
 
@@ -20,12 +19,19 @@ export default async function ExperienceList() {
           </div>
         ))}
       {experiences && experiences.length === 0 && (
-        // image : C de l'imac tombé par terre genre un vestige antique
-        <p className="text-center">
-          Il y a une bonne et une mauvaise nouvelle : Tu as trouvé le C de
-          l'IMAC, mais il n'y a aucune expériences d'étudiants à afficher pour
-          l'instant...
-        </p>
+        <>
+          <Image
+            src="/cimac.png"
+            alt="Description de l'image"
+            width={200}
+            height={200}
+          />
+          <p className="text-center">
+            Il y a une bonne et une mauvaise nouvelle : Tu as trouvé le C de
+            l'IMAC, mais il n'y a aucune expérience correspondant à ta
+            recherche...
+          </p>
+        </>
       )}
     </div>
   );
