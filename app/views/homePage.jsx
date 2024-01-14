@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import ExperienceList from "./experiencesList";
 import { getExperiences } from "../utils/api";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { Suspense } from "react";
 import Search from "../components/search";
 
 export default async function Page({ searchParams }) {
   let query = searchParams?.query || "";
+  if (query) query = formatText(query);
 
   console.log(query);
   const currentPage = Number(searchParams?.page) || 1;
@@ -35,12 +34,22 @@ export default async function Page({ searchParams }) {
 function experienceMatchesSearchTerm(experience, searchTerm) {
   experience = experience.attributes;
   const { position, company, city, country } = experience;
+  const { first_name, last_name } = experience.author.data.attributes;
   const normalizedSearchTerm = searchTerm.toLowerCase();
 
   return (
-    position.toLowerCase().includes(normalizedSearchTerm) ||
-    company.toLowerCase().includes(normalizedSearchTerm) ||
-    city.toLowerCase().includes(normalizedSearchTerm) ||
-    country.toLowerCase().includes(normalizedSearchTerm)
+    formatText(position).includes(normalizedSearchTerm) ||
+    formatText(company).includes(normalizedSearchTerm) ||
+    formatText(city).includes(normalizedSearchTerm) ||
+    formatText(country).includes(normalizedSearchTerm) ||
+    formatText(first_name).includes(normalizedSearchTerm) ||
+    formatText(last_name).includes(normalizedSearchTerm)
   );
+}
+
+function formatText(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 }
