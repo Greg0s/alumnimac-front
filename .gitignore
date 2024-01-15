@@ -34,3 +34,6 @@ next-env.d.ts
 
 # api token
 app/utils/apiToken.js
+
+# saves
+app/old
