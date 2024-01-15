@@ -1,32 +1,59 @@
 "use client";
 
+import React, { useState } from "react";
 import ExperienceList from "./experiencesList";
-import { getExperiences } from "../utils/api";
-import { Suspense } from "react";
 import Search from "../components/search";
+import Filters from "../components/filters";
 
-export default async function Page({ searchParams }) {
+export default function Page({ searchParams, experiences }) {
+  const [filters, setFilters] = useState("");
+
   let query = searchParams?.query || "";
   if (query) query = formatText(query);
 
   console.log(query);
   const currentPage = Number(searchParams?.page) || 1;
 
-  let experiences = await getExperiences();
   let filteredExperiences;
 
+  const filterExperiences = (experience) => {
+    const { work_mode, domain, type, paid, abroad } = experience.attributes;
+    const {
+      filterType,
+      filterDomain,
+      filterPaid,
+      filterAbroad,
+      filterWorkMode,
+    } = filters;
+
+    console.log("filter type", filterAbroad, abroad);
+
+    return (
+      (filterType == type || filterType == "all") &&
+      (filterDomain == domain || filterDomain == "all") &&
+      (filterPaid == paid.toString() || filterPaid == "all") &&
+      (filterAbroad == abroad.toString() || filterAbroad == "all") &&
+      (filterWorkMode == work_mode || filterWorkMode == "all")
+    );
+  };
+
   if (experiences) {
-    filteredExperiences = experiences.filter((experience) =>
-      experienceMatchesSearchTerm(experience, query)
+    filteredExperiences = experiences.filter(
+      (experience) =>
+        experienceMatchesSearchTerm(experience, query) &&
+        filterExperiences(experience)
     );
   }
+
+  const handleFiltersChange = (filters) => {
+    setFilters(filters);
+  };
 
   return (
     <>
       <Search />
-      <Suspense fallback={<p>Loading</p>}>
-        <ExperienceList experiences={filteredExperiences} />
-      </Suspense>
+      <Filters onFiltersChange={handleFiltersChange} />
+      <ExperienceList experiences={filteredExperiences} />
     </>
   );
 }
