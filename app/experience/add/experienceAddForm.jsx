@@ -2,7 +2,7 @@
 
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import "../../styles/experiencePage.scss";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "@/app/utils/authContext";
 import { useRouter } from "next/navigation";
 import DatePicker from "react-datepicker";
@@ -98,6 +98,13 @@ const ExperienceAddForm = () => {
         </Field>
         <ErrorMessage name="workMode" component="div" />
       </div>
+      {/* ABROAD? */}
+      <div className="field">
+        <label>
+          <Field type="checkbox" name="abroad" />
+          Cette expérience {values.ongoing ? "est " : "était "}à l'étranger
+        </label>
+      </div>
       {/* COUNTRY */}
       <div className="field">
         <label>Pays</label>
@@ -144,10 +151,11 @@ const ExperienceAddForm = () => {
         <label>Domaine</label>
         <Field as="select" name="domain">
           <option value="">Choisir un domaine</option>
-          <option value="on_site">Audiovisuel</option>
-          <option value="remote">Gestion de projet</option>
-          <option value="hybrid">Programmation</option>
-          <option value="hybrid">Dev web / mobile</option>
+          <option value="audiovisual">Audiovisuel</option>
+          <option value="graphic-design">Graphisme</option>
+          <option value="project-management">Gestion de projet</option>
+          <option value="programming">Programmation</option>
+          <option value="web-dev">Dev web / mobile</option>
           <option value="other">Autre</option>
         </Field>
         <ErrorMessage name="domain" component="div" />
@@ -162,7 +170,7 @@ const ExperienceAddForm = () => {
       {/* DESCRIPTION */}
       <div className="field">
         <label>Description</label>
-        <Field type="text" name="description" />
+        <Field as="textarea" name="description" />
         <ErrorMessage name="description" component="div" />
       </div>
       <button type="submit">Valider</button>
