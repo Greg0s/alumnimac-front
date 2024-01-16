@@ -1,13 +1,42 @@
+"use client";
+
 import { getExperience } from "@/app/utils/api";
 import { notFound } from "next/navigation";
 import "../../styles/experiencePage.scss";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default async function ExperienceDetails({ params }) {
-  const experience = await getExperience(params.id);
+export default function ExperienceDetails({ params }) {
+  const [experience, setExperience] = useState(null);
+  const [experienceLoaded, setExperienceLoaded] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedExperience = await getExperience(params.id);
+        setExperience(fetchedExperience);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des données de l'expérience :",
+          error
+        );
+        notFound();
+      }
+    };
+
+    fetchData();
+  }, [params.id]);
+
+  const handleEditClick = () => {
+    router.push(`/experience/edit?id=${params.id}`);
+  };
+
+  if (!experience) {
+    return <p>Pas d'expérience</p>;
+  }
 
   const author = experience.attributes.author.data.attributes;
-
-  if (!experience) notFound();
 
   return (
     <main className="experience-page">
@@ -46,6 +75,7 @@ export default async function ExperienceDetails({ params }) {
         </div>
       </div>
       <p className="description">{experience.attributes.description}</p>
+      <button onClick={handleEditClick}>Modifier l'expérience</button>
     </main>
   );
 }
