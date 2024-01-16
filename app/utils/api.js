@@ -66,7 +66,7 @@ export async function addExperience(experience) {
 
   if (token) {
     try {
-      const response = await axios.put(baseUrl + "experiences/" + id, data, {
+      const response = await axios.post(baseUrl + "experiences", data, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -192,6 +192,29 @@ export async function signIn(_email, _password) {
     console.log("Error while retrieving data: ", error);
     return null;
   }
+}
+
+export async function getMe() {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    try {
+      const response = await axios.get(baseUrl + "users/me", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`Erreur ${response.status}`);
+      }
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log("Error while retrieving data: ", error);
+      return null;
+    }
+  } else throw new Error(`User not connected`);
 }
 
 export async function refreshToken() {
