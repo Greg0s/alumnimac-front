@@ -99,7 +99,6 @@ export async function updateExperience(id, experience) {
       if (response.status !== 200) {
         throw new Error(`Erreur ${response.status}`);
       }
-      console.log(response);
       return response;
     } catch (error) {
       console.log("Error while retrieving data: ", error);
@@ -155,13 +154,10 @@ export async function signUp(
   _email,
   _password
 ) {
-  const _student = await addStudent(_firstName, _lastName, _graduationYear);
-
   const data = {
     username: _email,
     email: _email,
     password: _password,
-    student: _student.data.id,
   };
 
   try {
@@ -215,48 +211,6 @@ export async function refreshToken() {
       throw new Error(`Erreur ${response.status}`);
     }
 
-    return response.data;
-  } catch (error) {
-    console.log("Error while retrieving data: ", error);
-    return null;
-  }
-}
-
-// Student
-
-export async function getStudent(id) {
-  try {
-    const response = await axiosInstance.get("/students/" + id);
-
-    if (response.status !== 200) {
-      notFound();
-    }
-
-    return response.data.data;
-  } catch (error) {
-    console.log("Error while retrieving data: ", error);
-    return null;
-  }
-}
-
-export async function addStudent(_firstName, _lastName, _graduationYear) {
-  const data = {
-    data: {
-      first_name: _firstName,
-      last_name: _lastName,
-      graduation_year: _graduationYear,
-    },
-  };
-
-  try {
-    const response = await axios.post(baseUrl + "students", data, {
-      "Content-Type": "application/json",
-    });
-
-    if (response.status !== 200) {
-      throw new Error(`Erreur ${response.status}`);
-    }
-    console.log(response.data.data);
     return response.data;
   } catch (error) {
     console.log("Error while retrieving data: ", error);
