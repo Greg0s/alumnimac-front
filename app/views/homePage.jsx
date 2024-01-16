@@ -11,9 +11,6 @@ export default function Page({ searchParams, experiences }) {
   let query = searchParams?.query || "";
   if (query) query = formatText(query);
 
-  console.log(query);
-  const currentPage = Number(searchParams?.page) || 1;
-
   let filteredExperiences;
 
   const filterExperiences = (experience) => {
