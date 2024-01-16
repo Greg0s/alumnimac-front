@@ -61,6 +61,54 @@ export async function getExperience(id) {
 }
 
 export async function addExperience(experience) {
+  const data = setExperienceData(experience);
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    try {
+      const response = await axios.put(baseUrl + "experiences/" + id, data, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`Erreur ${response.status}`);
+      }
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log("Error while retrieving data: ", error);
+      return null;
+    }
+  } else throw new Error(`User not connected`);
+}
+
+export async function updateExperience(id, experience) {
+  const data = setExperienceData(experience);
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    try {
+      const response = await axios.put(baseUrl + "experiences/" + id, data, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`Erreur ${response.status}`);
+      }
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log("Error while retrieving data: ", error);
+      return null;
+    }
+  } else throw new Error(`User not connected`);
+}
+
+function setExperienceData(experience) {
   const userId = localStorage.getItem("userId");
 
   let endDate = null;
@@ -95,26 +143,7 @@ export async function addExperience(experience) {
     },
   };
 
-  const token = localStorage.getItem("token");
-
-  if (token) {
-    try {
-      const response = await axios.post(baseUrl + "experiences/", data, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
-
-      if (response.status !== 200) {
-        throw new Error(`Erreur ${response.status}`);
-      }
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.log("Error while retrieving data: ", error);
-      return null;
-    }
-  } else throw new Error(`User not connected`);
+  return data;
 }
 
 // Auth
