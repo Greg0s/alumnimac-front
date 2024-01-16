@@ -1,10 +1,32 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 export default function Search() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+
+  const placeholders = [
+    "Développeur web Michelin Clermont-Ferrand",
+    "Chef de projet Espagne",
+    "Monteur Paris",
+    "Matthieu Chiama",
+    "Programmation C++",
+  ];
+  const [currentPlaceholder, setCurrentPlaceholder] = useState(placeholders[0]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentPlaceholder((prevPlaceholder) => {
+        const currentIndex = placeholders.indexOf(prevPlaceholder);
+        const nextIndex = (currentIndex + 1) % placeholders.length;
+        return placeholders[nextIndex];
+      });
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, [placeholders]);
 
   const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
@@ -19,7 +41,7 @@ export default function Search() {
   return (
     <input
       type="text"
-      placeholder="Rechercher par mots-clés"
+      placeholder={currentPlaceholder}
       onChange={(e) => {
         handleSearch(e.target.value);
       }}
