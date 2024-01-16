@@ -1,14 +1,17 @@
 "use client";
 
-import { getExperience } from "@/app/utils/api";
+import { getExperience, getMe } from "@/app/utils/api";
 import { notFound } from "next/navigation";
 import "../../styles/experiencePage.scss";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@/app/utils/authContext";
 
 export default function ExperienceDetails({ params }) {
   const [experience, setExperience] = useState(null);
-  const [experienceLoaded, setExperienceLoaded] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const { authState } = useContext(AuthContext);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -16,6 +19,7 @@ export default function ExperienceDetails({ params }) {
       try {
         const fetchedExperience = await getExperience(params.id);
         setExperience(fetchedExperience);
+        if (authState) setCurrentUser(await getMe());
       } catch (error) {
         console.error(
           "Erreur lors de la récupération des données de l'expérience :",
@@ -36,7 +40,12 @@ export default function ExperienceDetails({ params }) {
     return <p>Pas d'expérience</p>;
   }
 
-  const author = experience.attributes.author.data.attributes;
+  const author = experience.attributes.author.data;
+  let isAuthor;
+
+  if (currentUser && currentUser.data.id == author.id) {
+    isAuthor = true;
+  }
 
   return (
     <main className="experience-page">
@@ -60,7 +69,7 @@ export default function ExperienceDetails({ params }) {
           </div>
           <div className="name">
             <p>
-              {author.first_name} {author.last_name}{" "}
+              {author.attributes.first_name} {author.attributes.last_name}{" "}
             </p>
             <p>IMAC {author.graduation_year}</p>
           </div>
@@ -75,7 +84,9 @@ export default function ExperienceDetails({ params }) {
         </div>
       </div>
       <p className="description">{experience.attributes.description}</p>
-      <button onClick={handleEditClick}>Modifier l'expérience</button>
+      {isAuthor && (
+        <button onClick={handleEditClick}>Modifier l'expérience</button>
+      )}
     </main>
   );
 }
