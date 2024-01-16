@@ -155,6 +155,8 @@ export async function signUp(
   _password
 ) {
   const data = {
+    first_name: _firstName,
+    last_name: _lastName,
     username: _email,
     email: _email,
     password: _password,
