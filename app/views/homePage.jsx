@@ -23,8 +23,6 @@ export default function Page({ searchParams, experiences }) {
       filterWorkMode,
     } = filters;
 
-    console.log("filter type", filterAbroad, abroad);
-
     return (
       (filterType == type || filterType == "all") &&
       (filterDomain == domain || filterDomain == "all") &&
@@ -72,8 +70,11 @@ function experienceMatchesSearchTerm(experience, searchTerm) {
 }
 
 function formatText(text) {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+  if (text) {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+  return "";
 }
