@@ -1,0 +1,18 @@
+.search-filters {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  select {
+    padding: 0.25rem 0.5rem;
+
+    border: none;
+    border-radius: var(--radius-s);
+
+    background-color: var(--green);
+    color: var(--outline);
+
+    font-weight: 500;
+  }
+}
