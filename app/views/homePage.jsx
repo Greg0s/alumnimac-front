@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import ExperienceList from "./experiencesList";
 import Search from "../components/search";
 import Filters from "../components/filters";
+import "app/styles/homePage.scss";
+import AddButton from "../components/addButton";
 
 export default function Page({ searchParams, experiences }) {
   const [filters, setFilters] = useState("");
@@ -45,11 +47,14 @@ export default function Page({ searchParams, experiences }) {
   };
 
   return (
-    <>
-      <Search />
-      <Filters onFiltersChange={handleFiltersChange} />
+    <div className="home">
+      <div className="search">
+        <Search />
+        <Filters onFiltersChange={handleFiltersChange} />
+      </div>
       <ExperienceList experiences={filteredExperiences} />
-    </>
+      <AddButton />
+    </div>
   );
 }
 
