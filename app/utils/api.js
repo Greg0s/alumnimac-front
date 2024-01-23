@@ -75,7 +75,6 @@ export async function addExperience(experience) {
       if (response.status !== 200) {
         throw new Error(`Erreur ${response.status}`);
       }
-      console.log(response);
       return response;
     } catch (error) {
       console.log("Error while retrieving data: ", error);
@@ -168,7 +167,6 @@ export async function signUp(
     if (response.status !== 200) {
       throw new Error(`Erreur ${response.status}`);
     }
-    console.log(response.data.data);
     return response.data;
   } catch (error) {
     console.log("Error while retrieving data: ", error);
@@ -210,8 +208,7 @@ export async function getMe() {
       if (response.status !== 200) {
         throw new Error(`Erreur ${response.status}`);
       }
-      console.log(response);
-      return response;
+      return response.data;
     } catch (error) {
       console.log("Error while retrieving data: ", error);
       return null;
