@@ -9,8 +9,7 @@ import { AuthContext } from "@/app/utils/authContext";
 
 export default function ExperienceDetails({ params }) {
   const [experience, setExperience] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
-  const { authState } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
   const router = useRouter();
 
@@ -19,7 +18,6 @@ export default function ExperienceDetails({ params }) {
       try {
         const fetchedExperience = await getExperience(params.id);
         setExperience(fetchedExperience);
-        if (authState) setCurrentUser(await getMe());
       } catch (error) {
         console.error(
           "Erreur lors de la récupération des données de l'expérience :",
@@ -43,7 +41,7 @@ export default function ExperienceDetails({ params }) {
   const author = experience.attributes.author.data;
   let isAuthor;
 
-  if (currentUser && currentUser.data.id == author.id) {
+  if (currentUser && currentUser.id == author.id) {
     isAuthor = true;
   }
 
