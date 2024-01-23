@@ -1,0 +1,19 @@
+.add-btn {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-m);
+
+  background-color: var(--red);
+
+  font-weight: 800;
+  font-size: 1.5rem;
+
+  transition: border-radius ease 0.3s;
+
+  &:hover {
+    border-radius: var(--radius-m-hover);
+  }
+}
