@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../utils/authContext";
 
-import "../styles/add-button.scss";
+import "../styles/addButton.scss";
 
 import Link from "next/link";
 
