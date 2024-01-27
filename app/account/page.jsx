@@ -4,7 +4,7 @@ import React from "react";
 
 import SignInForm from "../components/signInForm";
 import SignUpForm from "../components/signUpForm";
-import ManageAccount from "../components/manageAccount";
+import AccountInfos from "../components/accountInfos";
 
 import { useContext } from "react";
 import { AuthContext } from "../utils/authContext";
@@ -20,7 +20,7 @@ export default function Account() {
     <>
       {authState ? (
         <div>
-          <ManageAccount />
+          <AccountInfos />
         </div>
       ) : (
         <div>
