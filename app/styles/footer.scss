@@ -1,0 +1,36 @@
+footer {
+  position: absolute;
+  bottom: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+
+  margin-top: auto;
+  padding: 1rem 0;
+  width: 100vw;
+
+  font-size: 0.9rem;
+
+  span,
+  a {
+    opacity: 0.2;
+  }
+
+  a {
+    transition: opacity ease 0.6s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  div {
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+  }
+}

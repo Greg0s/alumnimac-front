@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 import AuthProvider from "./utils/authContext";
 
 export const metadata = {
@@ -15,6 +16,7 @@ function RootLayout({ children }) {
           <Navbar />
           <main>{children}</main>
         </AuthProvider>
+        <Footer />
       </body>
     </html>
   );
