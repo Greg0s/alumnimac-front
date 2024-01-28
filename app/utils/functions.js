@@ -35,6 +35,15 @@ export function translateAttribute(attributeName, attributeValue) {
         default:
           return "Autre";
       }
+    case "mode":
+      switch (attributeValue) {
+        case "remote":
+          return "Distanciel";
+        case "on_site":
+          return "Présentiel";
+        case "hybrid":
+          return "Hybride";
+      }
     case "paid":
       switch (attributeValue) {
         case true:
