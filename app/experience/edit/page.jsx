@@ -75,7 +75,6 @@ const EditExperiencePage = ({ searchParams }) => {
   });
 
   const handleSubmit = async (values) => {
-    console.log("submit", values);
     updateExperience(searchParams.id, values)
       .then(() => {
         router.push("/experience/" + searchParams.id);
