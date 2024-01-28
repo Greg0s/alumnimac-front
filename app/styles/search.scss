@@ -5,6 +5,9 @@
 
   border-radius: var(--radius-s);
 
+  background-color: var(--dark-grey);
+  color: var(--outline);
+
   transition: outline ease 0.1s;
 
   &:focus {

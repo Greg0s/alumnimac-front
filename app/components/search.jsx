@@ -1,6 +1,7 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import "app/styles/search.scss";
 
 export default function Search() {
   const searchParams = useSearchParams();
@@ -40,6 +41,7 @@ export default function Search() {
 
   return (
     <input
+      className="search-bar"
       type="text"
       placeholder={currentPlaceholder}
       onChange={(e) => {
