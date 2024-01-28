@@ -6,6 +6,7 @@ import "../../styles/experiencePage.scss";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/app/utils/authContext";
+import { translateAttribute } from "@/app/utils/functions";
 
 export default function ExperienceDetails({ params }) {
   const [experience, setExperience] = useState(null);
@@ -46,15 +47,23 @@ export default function ExperienceDetails({ params }) {
   }
 
   return (
-    <main className="experience-page">
+    <div className="experience-page">
       <div className="title">
         <h1>{experience.attributes.position}</h1>
         <p className="company">{experience.attributes.company}</p>
       </div>
       <div className="cards">
         <div className="block-1">
-          <p>{experience.attributes.type}</p>
-          <p>{experience.attributes.domain}</p>
+          <p>{translateAttribute("type", experience.attributes.type)}</p>
+          <p>{translateAttribute("mode", experience.attributes.work_mode)}</p>
+          <p>
+            {translateAttribute("paid", experience.attributes.paid)}{" "}
+            {experience.attributes.paid &&
+              experience.attributes.compensation && (
+                <p>{experience.attributes.compensation}€/mois</p>
+              )}
+          </p>
+          <p>{translateAttribute("domain", experience.attributes.domain)}</p>
         </div>
         <div className="block-2">
           <div className="location">
@@ -69,7 +78,7 @@ export default function ExperienceDetails({ params }) {
             <p>
               {author.attributes.first_name} {author.attributes.last_name}{" "}
             </p>
-            <p>IMAC {author.graduation_year}</p>
+            <p>IMAC {author.attributes.graduation_year}</p>
           </div>
           <div className="dates">
             <p>{experience.attributes.start_date}</p>
@@ -85,6 +94,6 @@ export default function ExperienceDetails({ params }) {
       {isAuthor && (
         <button onClick={handleEditClick}>Modifier l'expérience</button>
       )}
-    </main>
+    </div>
   );
 }
