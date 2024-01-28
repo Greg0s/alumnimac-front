@@ -15,8 +15,8 @@
     border: 4px solid transparent;
     border-radius: var(--radius-m);
 
-    background-color: var(--outline);
-    color: var(--background);
+    background-color: var(--dark-grey);
+    color: var(--outline);
 
     transition: border-radius ease 0.3s, border ease 0.3s;
 
@@ -47,6 +47,8 @@
 
         text-align: right;
         text-transform: uppercase;
+
+        opacity: 0.6;
       }
     }
 
