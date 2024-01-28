@@ -7,13 +7,14 @@ import { AuthContext } from "../utils/authContext";
 const SignOut = () => {
   const router = useRouter();
 
-  const { authState, setAuthState } = useContext(AuthContext);
+  const { setAuthState, setCurrentUser } = useContext(AuthContext);
 
   const signOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
-
     setAuthState(null);
+    setCurrentUser(null);
+
     router.push("/account");
   };
 
