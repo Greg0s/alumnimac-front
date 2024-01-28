@@ -17,8 +17,6 @@ const ExperienceAddForm = () => {
 
   if (!authState) router.push("/");
 
-  console.log(authState);
-
   return (
     <Form>
       {/* POSITION */}
