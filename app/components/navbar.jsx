@@ -23,7 +23,7 @@ const Navbar = () => {
             quality={100}
             placeholder="blur" // blur version on load
           />
-          AlumnIMAC
+          <span className="logo-text">AlumnIMAC</span>
         </Link>
         <Link href="/account">{authState ? "Mon Compte" : "Se connecter"}</Link>
       </nav>
