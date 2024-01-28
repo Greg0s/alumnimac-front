@@ -6,11 +6,16 @@ import Link from "next/link";
 import Logo from "public/logo.png";
 import Image from "next/image";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../utils/authContext";
+import useRenewAccessToken from "../utils/useRenewAccessToken";
 
 const Navbar = () => {
   const { authState, setAuthState } = useContext(AuthContext);
+
+  const token = localStorage.getItem("token");
+
+  if (token) useRenewAccessToken(authState, setAuthState);
 
   return (
     <>

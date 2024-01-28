@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import { signIn } from "../utils/api";
+import { getMe, signIn } from "../utils/api";
 
 import { useContext } from "react";
 import { AuthContext } from "../utils/authContext";
@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 const SignInForm = () => {
   const router = useRouter();
 
-  const { authState, setAuthState } = useContext(AuthContext);
+  const { setAuthState, setCurrentUser } = useContext(AuthContext);
 
   const initialValues = {
     email: "",
@@ -33,9 +33,16 @@ const SignInForm = () => {
         localStorage.setItem("userId", userCredential.user.id);
         router.push("/");
       })
+      .finally(() => {
+        getCurrentUserData();
+      })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const getCurrentUserData = async () => {
+    setCurrentUser(await getMe());
   };
 
   return (

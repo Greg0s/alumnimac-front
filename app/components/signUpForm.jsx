@@ -33,9 +33,16 @@ const SignUpForm = () => {
       .then((userCredential) => {
         console.log(userCredential);
       })
+      .finally(() => {
+        getCurrentUserData();
+      })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const getCurrentUserData = async () => {
+    setCurrentUser(await getMe());
   };
 
   return (
