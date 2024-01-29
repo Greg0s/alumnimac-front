@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import LinkedInSvg from "../assets/svg/linkedIn";
-import DiscordSvg from "../assets/svg/discord";
-
+import { FaDiscord, FaLinkedinIn } from "react-icons/fa";
 import "@/app/styles/footer.scss";
 
 const Footer = () => {
@@ -20,13 +18,13 @@ const Footer = () => {
           target="_blank"
           href="https://discordapp.com/users/151041434043023361"
         >
-          <DiscordSvg size={14} />
+          <FaDiscord className="footer-icons" />
         </Link>
         <Link
           target="_blank"
           href="https://www.linkedin.com/in/gregoire-tinnes/"
         >
-          <LinkedInSvg size={14} />
+          <FaLinkedinIn className="footer-icons" />
         </Link>
       </div>
     </footer>

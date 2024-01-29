@@ -6,7 +6,9 @@ import "../../styles/experiencePage.scss";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/app/utils/authContext";
-import { translateAttribute } from "@/app/utils/functions";
+import { changeDateFormat, translateAttribute } from "@/app/utils/functions";
+import Link from "next/link";
+import { HiArrowNarrowLeft } from "react-icons/hi";
 
 export default function ExperienceDetails({ params }) {
   const [experience, setExperience] = useState(null);
@@ -45,9 +47,11 @@ export default function ExperienceDetails({ params }) {
   if (currentUser && currentUser.id == author.id) {
     isAuthor = true;
   }
-
   return (
     <div className="experience-page">
+      <Link href={"/"}>
+        <HiArrowNarrowLeft />
+      </Link>
       <div className="title">
         <h1>{experience.attributes.position}</h1>
         <p className="company">{experience.attributes.company}</p>
@@ -60,7 +64,10 @@ export default function ExperienceDetails({ params }) {
             {translateAttribute("paid", experience.attributes.paid)}{" "}
             {experience.attributes.paid &&
               experience.attributes.compensation && (
-                <p>{experience.attributes.compensation}€/mois</p>
+                <span>
+                  {experience.attributes.compensation}
+                  {"€/mois"}
+                </span>
               )}
           </p>
           <p>{translateAttribute("domain", experience.attributes.domain)}</p>
@@ -81,9 +88,12 @@ export default function ExperienceDetails({ params }) {
             <p>IMAC {author.attributes.graduation_year}</p>
           </div>
           <div className="dates">
-            <p>{experience.attributes.start_date}</p>
+            <p>{changeDateFormat(experience.attributes.start_date)}</p>
             {experience.attributes.end_date ? (
-              <p>{experience.attributes.end_date}</p>
+              <p>
+                {changeDateFormat(experience.attributes.end_date)} {"("}
+                {experience.attributes.duration} {"mois)"}
+              </p>
             ) : (
               <p>En cours</p>
             )}
