@@ -7,6 +7,13 @@
   width: var(--content-width);
   max-width: var(--max-content-width);
 
+  .back-arrow {
+    transition: transform ease-in 0.3s;
+    &:hover {
+      transform: translateX(-2px);
+    }
+  }
+
   .title {
     .company {
       font-size: 1.2rem;

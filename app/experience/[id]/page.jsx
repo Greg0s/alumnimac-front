@@ -50,7 +50,7 @@ export default function ExperienceDetails({ params }) {
   return (
     <div className="experience-page">
       <Link href={"/"}>
-        <HiArrowNarrowLeft />
+        <HiArrowNarrowLeft className="back-arrow" />
       </Link>
       <div className="title">
         <h1>{experience.attributes.position}</h1>
