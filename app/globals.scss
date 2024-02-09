@@ -101,3 +101,10 @@ button {
     background-color: var(--dark-grey);
   }
 }
+
+.link {
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0.5;
+  }
+}
