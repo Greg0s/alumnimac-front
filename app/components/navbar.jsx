@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <Link className="logo" href="/">
+        <Link className="logo " href="/">
           <Image
             src={Logo}
             alt="logo"
@@ -28,9 +28,11 @@ const Navbar = () => {
             quality={100}
             placeholder="blur" // blur version on load
           />
-          <span className="logo-text">AlumnIMAC</span>
+          <span className="logo-text link">AlumnIMAC</span>
         </Link>
-        <Link href="/account">{authState ? "Mon Compte" : "Se connecter"}</Link>
+        <Link className="link" href="/account">
+          {authState ? "Mon Compte" : "Se connecter"}
+        </Link>
       </nav>
     </>
   );
