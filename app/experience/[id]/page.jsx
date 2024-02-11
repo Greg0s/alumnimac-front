@@ -8,7 +8,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/app/utils/authContext";
 import { changeDateFormat, translateAttribute } from "@/app/utils/functions";
 import Link from "next/link";
-import { HiArrowNarrowLeft } from "react-icons/hi";
+import {
+  HiArrowNarrowLeft,
+  HiBriefcase,
+  HiLocationMarker,
+  HiUser,
+  HiClock,
+} from "react-icons/hi";
 
 export default function ExperienceDetails({ params }) {
   const [experience, setExperience] = useState(null);
@@ -49,15 +55,16 @@ export default function ExperienceDetails({ params }) {
   }
   return (
     <div className="experience-page">
-      <Link href={"/"}>
-        <HiArrowNarrowLeft className="back-arrow" />
+      <Link className="back-arrow" href={"/"}>
+        <HiArrowNarrowLeft />
       </Link>
       <div className="title">
         <h1>{experience.attributes.position}</h1>
         <p className="company">{experience.attributes.company}</p>
       </div>
       <div className="cards">
-        <div className="block-1">
+        <div className="block block-1">
+          <HiBriefcase className="block-icon" />
           <p>{translateAttribute("type", experience.attributes.type)}</p>
           <p>{translateAttribute("mode", experience.attributes.work_mode)}</p>
           <p>
@@ -73,7 +80,8 @@ export default function ExperienceDetails({ params }) {
           <p>{translateAttribute("domain", experience.attributes.domain)}</p>
         </div>
         <div className="block-2">
-          <div className="location">
+          <div className="block location">
+            <HiLocationMarker className="block-icon" />
             <p>
               {experience.attributes.city}, {experience.attributes.country}
             </p>
@@ -81,22 +89,27 @@ export default function ExperienceDetails({ params }) {
               <p>{experience.attributes.address}</p>
             )}
           </div>
-          <div className="name">
+          <div className="block name">
+            <HiUser className="block-icon" />
             <p>
               {author.attributes.first_name} {author.attributes.last_name}{" "}
             </p>
             <p>IMAC {author.attributes.graduation_year}</p>
           </div>
-          <div className="dates">
-            <p>{changeDateFormat(experience.attributes.start_date)}</p>
-            {experience.attributes.end_date ? (
-              <p>
-                {changeDateFormat(experience.attributes.end_date)} {"("}
-                {experience.attributes.duration} {"mois)"}
-              </p>
-            ) : (
-              <p>En cours</p>
-            )}
+          <div className="block dates">
+            <HiClock className="block-icon" />
+
+            <p>
+              {changeDateFormat(experience.attributes.start_date)} {" - "}
+              {experience.attributes.end_date ? (
+                <span>
+                  {changeDateFormat(experience.attributes.end_date)} {"("}
+                  {experience.attributes.duration} {"mois)"}
+                </span>
+              ) : (
+                <span>Aujourd'hui (En cours)</span>
+              )}
+            </p>
           </div>
         </div>
       </div>
