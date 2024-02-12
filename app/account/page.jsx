@@ -12,11 +12,14 @@ import useRenewAccessToken from "../utils/useRenewAccessToken";
 
 export default function Account() {
   const { authState, setAuthState, setCurrentUser } = useContext(AuthContext);
-
-  const token = localStorage.getItem("token");
-
-  if (token) useRenewAccessToken(authState, setAuthState, setCurrentUser);
-  return (
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      useRenewAccessToken(authState, setAuthState);
+    }
+  }, []);
+  
+    return (
     <>
       {authState ? (
         <div>
