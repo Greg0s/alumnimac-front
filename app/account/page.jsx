@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import SignInForm from "../components/signInForm";
 import SignUpForm from "../components/signUpForm";
@@ -12,14 +12,11 @@ import useRenewAccessToken from "../utils/useRenewAccessToken";
 
 export default function Account() {
   const { authState, setAuthState, setCurrentUser } = useContext(AuthContext);
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      useRenewAccessToken(authState, setAuthState);
-    }
-  }, []);
-  
-    return (
+
+  const token = localStorage.getItem("token");
+  if (token) useRenewAccessToken(authState, setAuthState, setCurrentUser);
+
+  return (
     <>
       {authState ? (
         <div>

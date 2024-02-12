@@ -2,19 +2,21 @@ import { useEffect } from "react";
 import { getMe, refreshToken } from "./api";
 
 const useRenewAccessToken = (authState, setAuthState, setCurrentUser) => {
-  const renewAccessToken = async () => {
-    try {
-      const response = await refreshToken();
+  useEffect(() => {
+    const renewAccessToken = async () => {
+      try {
+        const response = await refreshToken();
 
-      setAuthState(response.jwt);
+        setAuthState(response.jwt);
 
-      if (setCurrentUser) setCurrentUser(await getMe());
-    } catch (error) {
-      console.error("Error during token renewal: ", error);
-    }
-  };
+        if (setCurrentUser) setCurrentUser(await getMe());
+      } catch (error) {
+        console.error("Error during token renewal: ", error);
+      }
+    };
 
-  renewAccessToken();
+    renewAccessToken();
+  }, [authState, setAuthState]);
 };
 
 export default useRenewAccessToken;
