@@ -8,8 +8,8 @@ export default function ExperienceList({ experiences }) {
     <div className="experiences-list">
       {experiences &&
         experiences.map((experience) => (
-          <Link href={`/experience/${experience.id}`}>
-            <div key={experience.id} className="experience">
+          <Link key={experience.id} href={`/experience/${experience.id}`}>
+            <div className="experience">
               <div className="title">
                 <h3>{experience.attributes.position}</h3>
                 <span className="title-right">
