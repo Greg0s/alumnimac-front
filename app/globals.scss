@@ -58,10 +58,6 @@ body {
   min-height: 100vh;
 }
 
-body {
-  margin-bottom: 5rem;
-}
-
 main {
   display: flex;
   justify-content: center;
@@ -79,6 +75,12 @@ input {
 }
 
 /* GLOBAL STYLE */
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 a {
   color: var(--outline) !important;
