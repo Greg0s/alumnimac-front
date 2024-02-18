@@ -18,7 +18,7 @@ const ExperienceAddForm = () => {
   if (!authState) router.push("/");
 
   return (
-    <Form>
+    <Form className="form">
       {/* POSITION */}
       <div className="field">
         <label>Poste occupé</label>
@@ -171,7 +171,9 @@ const ExperienceAddForm = () => {
         <Field as="textarea" name="description" />
         <ErrorMessage name="description" component="div" />
       </div>
-      <button type="submit">Valider</button>
+      <button className="btn btn--primary" type="submit">
+        Valider
+      </button>
     </Form>
   );
 };

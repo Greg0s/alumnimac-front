@@ -13,7 +13,7 @@ const AddButton = () => {
   return (
     <>
       {authState && (
-        <Link className="add-btn" href="/experience/add">
+        <Link className="btn btn--primary add-btn" href="/experience/add">
           +
         </Link>
       )}

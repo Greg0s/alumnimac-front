@@ -115,7 +115,9 @@ export default function ExperienceDetails({ params }) {
       </div>
       <p className="description">{experience.attributes.description}</p>
       {isAuthor && (
-        <button onClick={handleEditClick}>Modifier l'expérience</button>
+        <button className="btn btn--primary" onClick={handleEditClick}>
+          Modifier l'expérience
+        </button>
       )}
     </div>
   );
