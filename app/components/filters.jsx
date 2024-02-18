@@ -56,7 +56,7 @@ export default function Filters({ onFiltersChange }) {
           value={filterPaid}
           onChange={(e) => setFilterPaid(e.target.value)}
         >
-          <option value="all">Tout</option>
+          <option value="all">Rémunération indifférente</option>
           <option value="true">Rémunérée</option>
           <option value="false">Non-rémunérée</option>
         </select>
@@ -68,7 +68,7 @@ export default function Filters({ onFiltersChange }) {
           value={filterAbroad}
           onChange={(e) => setFilterAbroad(e.target.value)}
         >
-          <option value="all">Partout</option>
+          <option value="all">Toute localisation</option>
           <option value="true">À l'étranger</option>
           <option value="false">En France</option>
         </select>
@@ -80,7 +80,7 @@ export default function Filters({ onFiltersChange }) {
           value={filterWorkMode}
           onChange={(e) => setFilterWorkMode(e.target.value)}
         >
-          <option value="all">Tout</option>
+          <option value="all">Tout mode de travail</option>
           <option value="on_site">Présentiel</option>
           <option value="remote">Distantiel</option>
           <option value="hybrid">Hybride</option>
