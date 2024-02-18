@@ -4,7 +4,7 @@ import { AuthContext } from "@/app/utils/authContext";
 
 import "@/app/styles/accountInfos.scss";
 
-import SignOut from "./signOut";
+import SignOut from "./accountInfosSignOut";
 
 export default function AccountInfos() {
   const { currentUser } = useContext(AuthContext);

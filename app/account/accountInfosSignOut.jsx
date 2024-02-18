@@ -18,7 +18,14 @@ const SignOut = () => {
     router.push("/account");
   };
 
-  return <button onClick={signOut}>Se déconnecter</button>;
+  return (
+    <button
+      className="btn btn--primary btn--primary--warning"
+      onClick={signOut}
+    >
+      Se déconnecter
+    </button>
+  );
 };
 
 export default SignOut;

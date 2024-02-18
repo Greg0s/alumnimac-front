@@ -3,6 +3,8 @@ import * as Yup from "yup";
 
 import { signUp } from "../utils/api";
 
+import "@/app/styles/form.scss";
+
 const SignUpForm = () => {
   const initialValues = {
     firstName: "",
@@ -15,7 +17,7 @@ const SignUpForm = () => {
   const validationSchema = Yup.object({
     firstName: Yup.string().required("Prénom requis"),
     lastName: Yup.string().required("Nom requis"),
-    graduationYear: Yup.number().required("Année de promo requise"),
+    graduationYear: Yup.number().required("Année de la promo requise"),
     email: Yup.string()
       .email("Adresse e-mail invalide")
       .required("E-mail requis"),
@@ -46,40 +48,62 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
+    <div className="sign-up">
       <h1>S'inscrire</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <div>
+        <Form className="form">
+          <div className="form__field">
             <label>Prénom</label>
+            <ErrorMessage
+              className="form__field__error"
+              name="firstName"
+              component="div"
+            />
             <Field type="text" name="firstName" />
-            <ErrorMessage name="firstName" component="div" />
           </div>
-          <div>
+          <div className="form__field">
             <label>Nom</label>
+            <ErrorMessage
+              className="form__field__error"
+              name="lastName"
+              component="div"
+            />
             <Field type="text" name="lastName" />
-            <ErrorMessage name="lastName" component="div" />
           </div>
-          <div>
+          <div className="form__field">
             <label>Année de la promo</label>
+            <ErrorMessage
+              className="form__field__error"
+              name="graduationYear"
+              component="div"
+            />
             <Field type="number" name="graduationYear" />
-            <ErrorMessage name="graduationYear" component="div" />
           </div>
-          <div>
+          <div className="form__field">
             <label>E-mail</label>
+            <ErrorMessage
+              className="form__field__error"
+              name="email"
+              component="div"
+            />
             <Field type="email" name="email" />
-            <ErrorMessage name="email" component="div" />
           </div>
-          <div>
+          <div className="form__field">
             <label>Mot de passe</label>
+            <ErrorMessage
+              className="form__field__error"
+              name="password"
+              component="div"
+            />
             <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" />
           </div>
-          <button type="submit">S'inscrire</button>
+          <button className="btn btn--primary" type="submit">
+            S'inscrire
+          </button>
         </Form>
       </Formik>
     </div>
