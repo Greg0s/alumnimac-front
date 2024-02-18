@@ -105,12 +105,12 @@
     .back-arrow {
       position: absolute;
       top: 0.5rem;
-      transform: translateX(-150%);
+      transform: translateX(-200%);
 
       font-size: 1.5rem;
 
       &:hover {
-        transform: translateX(calc(-2px - 150%));
+        transform: translateX(calc(-2px - 200%));
       }
     }
 
