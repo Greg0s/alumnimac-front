@@ -4,7 +4,7 @@ import Footer from "./components/footer";
 import AuthProvider from "./utils/authContext";
 
 export const metadata = {
-  title: "Alumnimac",
+  title: "Alumnimac - Expériences professionnelles d'IMACs",
   description: "Retrouvez les expériences professionnelles des IMACs.",
 };
 
