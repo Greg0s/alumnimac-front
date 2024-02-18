@@ -15,6 +15,10 @@ mobile first
   --blue: #25bef4;
   --red: #f73c3c;
 
+  --blue-values: 37, 190, 244;
+  --red-values: 247, 60, 60;
+  --grey-values: 132, 132, 132;
+
   /* CONTENT DISPLAY */
   --radius-s: 0.3rem;
   --radius-m: 0.75rem;
@@ -50,7 +54,6 @@ mobile first
 
 html,
 body {
-  max-width: 100vw;
   background-color: var(--background);
   color: var(--outline);
   font-family: "Montserrat", sans-serif;
@@ -61,8 +64,7 @@ body {
 main {
   display: flex;
   justify-content: center;
-  width: var(--content-width);
-  margin: auto;
+  width: 100%;
 }
 
 a {
@@ -79,18 +81,15 @@ input {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  min-height: 100vh;
 }
 
 a {
   color: var(--outline) !important;
 }
 
-button {
-  background-color: var(--grey);
-  color: var(--outline);
-  border: none;
-
+.btn {
   padding: 1rem;
   border-radius: var(--radius-m);
 
@@ -100,11 +99,41 @@ button {
 
   cursor: pointer;
 
-  transition: border-radius ease 0.3s, background-color ease 0.3s;
+  transition: border-radius ease 0.3s, background-color ease 0.3s,
+    color ease 0.3s, box-shadow 0.3s ease;
+
+  &--primary {
+    background-color: var(--blue);
+    border: 2px solid var(--blue);
+
+    color: var(--outline);
+
+    &--warning {
+      background-color: var(--red);
+      border: 2px solid var(--red);
+
+      &:hover {
+        box-shadow: 1px 0 25px rgba(var(--red-values), 0.5) !important;
+      }
+    }
+
+    &:hover {
+      box-shadow: 1px 0 25px rgba(var(--blue-values), 0.5);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--outline);
+    color: var(--grey);
+    border: none;
+
+    &:hover {
+      box-shadow: 1px 0 25px rgba(255, 255, 255, 0.5);
+    }
+  }
 
   &:hover {
     border-radius: var(--radius-m-hover);
-    background-color: var(--dark-grey);
   }
 }
 
@@ -112,5 +141,22 @@ button {
   transition: opacity 0.3s ease;
   &:hover {
     opacity: 0.5;
+  }
+}
+
+input {
+  width: 100%;
+  height: 1.8rem;
+  padding: 0.5rem 1rem;
+
+  border-radius: var(--radius-s);
+
+  background-color: var(--dark-grey);
+  color: var(--outline);
+
+  transition: outline ease 0.1s;
+
+  &:focus {
+    outline: 2px solid var(--blue);
   }
 }
