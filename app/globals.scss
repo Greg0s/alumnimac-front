@@ -159,6 +159,9 @@ input {
 
   transition: box-shadow ease 0.5s;
 
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+
   &:focus {
     box-shadow: 1px 0 25px rgba(var(--blue-values), 0.5);
   }
@@ -181,7 +184,7 @@ input[type="checkbox"] {
 }
 
 select {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--radius-s);
 
   background-color: var(--green);
