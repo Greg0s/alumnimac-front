@@ -4,7 +4,7 @@
   align-items: center;
   gap: 2rem;
 
-  .search {
+  &__search {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;

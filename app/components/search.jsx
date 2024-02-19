@@ -1,6 +1,8 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import { HiOutlineSearch } from "react-icons/hi";
+
 import "app/styles/search.scss";
 
 export default function Search() {
@@ -40,14 +42,17 @@ export default function Search() {
   }, 300);
 
   return (
-    <input
-      className="search-bar"
-      type="text"
-      placeholder={currentPlaceholder}
-      onChange={(e) => {
-        handleSearch(e.target.value);
-      }}
-      defaultValue={searchParams.get("query")?.toString()}
-    />
+    <div className="search">
+      <HiOutlineSearch className="search__icon" />
+      <input
+        className="search__input"
+        type="text"
+        placeholder={currentPlaceholder}
+        onChange={(e) => {
+          handleSearch(e.target.value);
+        }}
+        defaultValue={searchParams.get("query")?.toString()}
+      />
+    </div>
   );
 }
