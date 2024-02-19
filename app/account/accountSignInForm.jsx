@@ -48,38 +48,35 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in">
-      <h1>Se connecter</h1>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        <Form className="form">
-          <div className="form__field">
-            <label>E-mail</label>
-            <ErrorMessage
-              className="form__field__error"
-              name="email"
-              component="div"
-            />
-            <Field type="email" name="email" />
-          </div>
-          <div className="form__field">
-            <label>Mot de passe</label>{" "}
-            <ErrorMessage
-              className="form__field__error"
-              name="password"
-              component="div"
-            />
-            <Field type="password" name="password" />
-          </div>
-          <button className="btn btn--primary" type="submit">
-            Se connecter
-          </button>
-        </Form>
-      </Formik>
-    </div>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
+      <Form className="form">
+        <div className="form__field">
+          <label>E-mail</label>
+          <ErrorMessage
+            className="form__field__error"
+            name="email"
+            component="div"
+          />
+          <Field type="email" name="email" />
+        </div>
+        <div className="form__field">
+          <label>Mot de passe</label>{" "}
+          <ErrorMessage
+            className="form__field__error"
+            name="password"
+            component="div"
+          />
+          <Field type="password" name="password" />
+        </div>
+        <button className="btn btn--primary" type="submit">
+          Se connecter
+        </button>
+      </Form>
+    </Formik>
   );
 };
 

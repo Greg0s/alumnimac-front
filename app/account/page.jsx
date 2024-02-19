@@ -26,14 +26,26 @@ export default function Account() {
   }, []);
 
   return (
-    <div className="account-page">
+    <>
       {authState ? (
-        <div>
-          <AccountInfos />
+        <div className="account-page">
+          <div>
+            <AccountInfos />
+          </div>{" "}
         </div>
       ) : (
-        <div>
-          {showSignUp ? <SignUpForm /> : <SignInForm />}
+        <div className="account-page">
+          {showSignUp ? (
+            <>
+              <h1>S'inscrire</h1>
+              <SignUpForm />
+            </>
+          ) : (
+            <>
+              <h1>Se connecter</h1>
+              <SignInForm />
+            </>
+          )}
           <button className="btn btn--secondary" onClick={toggleForm}>
             {showSignUp
               ? "Déjà un compte ? Se connecter"
@@ -41,6 +53,6 @@ export default function Account() {
           </button>
         </div>
       )}
-    </div>
+    </>
   );
 }
