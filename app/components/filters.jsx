@@ -97,7 +97,7 @@ export default function Filters({ onFiltersChange }) {
 
       {/* RESET BUTTON */}
       <button class="search-filters__reset" onClick={resetFilters}>
-        Réinitialiser les filtres
+        Réinitialiser
       </button>
     </div>
   );
