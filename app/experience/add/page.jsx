@@ -65,7 +65,7 @@ const ExperienceAdd = () => {
   };
 
   return (
-    <div className="sign-in-container">
+    <div className="add-experience">
       <h1>Ajouter une expérience</h1>
       <Formik
         initialValues={initialValues}

@@ -1,12 +1,14 @@
 "use client";
 
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
-import "../../styles/experiencePage.scss";
+
 import { useContext } from "react";
 import { AuthContext } from "@/app/utils/authContext";
 import { useRouter } from "next/navigation";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "@/app/styles/experienceAdd.scss";
+import "@/app/styles/form.scss";
 
 const ExperienceAddForm = () => {
   const router = useRouter();
@@ -20,24 +22,37 @@ const ExperienceAddForm = () => {
   return (
     <Form className="form">
       {/* POSITION */}
-      <div className="field">
+      <div className="form__field">
         <label>Poste occupé</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="position"
+          component="div"
+        />
         <Field
           type="text"
           name="position"
           placeholder="Ex : Développeur web front end"
         />
-        <ErrorMessage name="position" component="div" />
       </div>
       {/* COMPANY */}
-      <div className="field">
+      <div className="form__field">
         <label>Entreprise</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="company"
+          component="div"
+        />
         <Field type="text" name="company" placeholder="Ex : Ubisoft" />
-        <ErrorMessage name="company" component="div" />
       </div>
       {/* TYPE */}
-      <div className="field">
+      <div className="form__field form__field--select">
         <label>Type</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="type"
+          component="div"
+        />
         <Field as="select" name="type">
           <option value="">Choisir un type</option>
 
@@ -45,14 +60,19 @@ const ExperienceAddForm = () => {
           <option value="job">Emploi</option>
           <option value="other">Autre</option>
         </Field>
-        <ErrorMessage name="type" component="div" />
       </div>
       {/* START DATE */}
-      <div className="field">
+      <div className="form__field">
         <label>Date de début</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="startDate"
+          component="div"
+        />
         <Field name="startDate">
           {({ field, form }) => (
             <DatePicker
+              wrapperClassName="date-picker"
               id="datePicker"
               selected={field.value}
               onChange={(date) => form.setFieldValue("startDate", date)}
@@ -60,93 +80,123 @@ const ExperienceAddForm = () => {
             />
           )}
         </Field>
-        <ErrorMessage name="startDate" component="div" />
       </div>
+      {/* END DATE */}
+      {!values.ongoing && (
+        <div className="form__field">
+          <label>Date de fin</label>
+          <ErrorMessage
+            className="form__field__error"
+            name="endDate"
+            component="div"
+          />
+
+          <Field name="endDate">
+            {({ field, form }) => (
+              <DatePicker
+                wrapperClassName="date-picker"
+                id="datePicker"
+                selected={field.value}
+                onChange={(date) => form.setFieldValue("endDate", date)}
+                dateFormat="dd/MM/yyyy"
+                disabled={form.values.ongoing}
+              />
+            )}
+          </Field>
+        </div>
+      )}
       {/* ONGOING? */}
-      <div className="field">
+      <div className="form__field form__field--checkbox">
+        <Field type="checkbox" name="ongoing" />
         <label>
-          <Field type="checkbox" name="ongoing" />
           Cette expérience n'est pas finie et je ne connais pas la date de fin
         </label>
       </div>
-      {/* END DATE */}
-      <div className="field">
-        <label>Date de fin</label>
-        <Field name="endDate">
-          {({ field, form }) => (
-            <DatePicker
-              id="datePicker"
-              selected={field.value}
-              onChange={(date) => form.setFieldValue("endDate", date)}
-              dateFormat="dd/MM/yyyy"
-              disabled={form.values.ongoing}
-            />
-          )}
-        </Field>
-        <ErrorMessage name="endDate" component="div" />
-      </div>
       {/* WORK MODE */}
-      <div className="field">
+      <div className="form__field">
         <label>Mode de travail</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="workMode"
+          component="div"
+        />
         <Field as="select" name="workMode">
           <option value="">Choisir un mode</option>
           <option value="on_site">Présentiel</option>
           <option value="remote">Distantiel</option>
           <option value="hybrid">Hybride</option>
         </Field>
-        <ErrorMessage name="workMode" component="div" />
       </div>
       {/* ABROAD? */}
-      <div className="field">
+      <div className="form__field form__field--checkbox">
+        <Field type="checkbox" name="abroad" />
         <label>
-          <Field type="checkbox" name="abroad" />
           Cette expérience {values.ongoing ? "est " : "était "}à l'étranger
         </label>
       </div>
       {/* COUNTRY */}
-      <div className="field">
+      <div className="form__field">
         <label>Pays</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="country"
+          component="div"
+        />
         <Field type="text" name="country" placeholder="Ex : France" />
-        <ErrorMessage name="country" component="div" />
       </div>
       {/* CITY */}
-      <div className="field">
+      <div className="form__field">
         <label>Ville</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="city"
+          component="div"
+        />
         <Field type="text" name="city" placeholder="Ex : Champs-sur-Marne" />
-        <ErrorMessage name="city" component="div" />
       </div>
       {/* ADDRESS */}
-      <div className="field">
+      <div className="form__field">
         <label>Adresse</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="address"
+          component="div"
+        />
         <Field type="text" name="address" placeholder="Ex : 5 Bd Descartes" />
-        <ErrorMessage name="address" component="div" />
       </div>
       {/* PAID? */}
-      <div className="field">
+      <div className="form__field form__field--checkbox">
+        <Field type="checkbox" name="paid" />
         <label>
-          <Field type="checkbox" name="paid" />
           Cette expérience {values.ongoing ? "est " : "était "}
           rémunérée
         </label>
       </div>
       {/* COMPENSATION */}
       {values.paid && (
-        <div className="field">
+        <div className="form__field">
           <label>Rémunération (€/mois)</label>
-
+          <ErrorMessage
+            className="form__field__error"
+            name="compensation"
+            component="div"
+          />
           <Field
             type="number"
             name="compensation"
             placeholder="Ex : 600"
             // disabled={values.paid}
           />
-
-          <ErrorMessage name="compensation" component="div" />
         </div>
       )}
       {/* DOMAIN */}
-      <div className="field">
+      <div className="form__field">
         <label>Domaine</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="domain"
+          component="div"
+        />
         <Field as="select" name="domain">
           <option value="">Choisir un domaine</option>
           <option value="audiovisual">Audiovisuel</option>
@@ -156,20 +206,20 @@ const ExperienceAddForm = () => {
           <option value="web-dev">Dev web / mobile</option>
           <option value="other">Autre</option>
         </Field>
-        <ErrorMessage name="domain" component="div" />
       </div>
       {/* RECOMMENDED? */}
-      <div className="field">
-        <label>
-          <Field type="checkbox" name="not_recommended" />
-          Je ne recommande pas cette expérience
-        </label>
+      <div className="form__field form__field--checkbox">
+        <Field type="checkbox" name="not_recommended" />{" "}
+        <label>Je ne recommande pas cette expérience</label>
+        <ErrorMessage
+          className="form__field__error"
+          name="description"
+          component="div"
+        />
       </div>
       {/* DESCRIPTION */}
-      <div className="field">
-        <label>Description</label>
-        <Field as="textarea" name="description" />
-        <ErrorMessage name="description" component="div" />
+      <div className="form__field form__field--textarea">
+        <label>Description</label> <Field as="textarea" name="description" />
       </div>
       <button className="btn btn--primary" type="submit">
         Valider
