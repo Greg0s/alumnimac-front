@@ -48,7 +48,8 @@ export default function Page({ searchParams, experiences }) {
 
   return (
     <div className="home">
-      <div className="search">
+      <h1>Toutes les expériences</h1>
+      <div className="home__search">
         <Search />
         <Filters onFiltersChange={handleFiltersChange} />
       </div>
