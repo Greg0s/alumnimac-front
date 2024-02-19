@@ -1,3 +1,9 @@
+# <img src="https://i.imgur.com/uJEOx8s.png" alt="Logo AlumnIMAC" width="35" height="auto" margin="auto"> AlumnIMAC
+
+> La plateforme pour parcourir les expériences professionnelles des IMACs
+
+## Next.js
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
