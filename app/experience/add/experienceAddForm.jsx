@@ -7,7 +7,6 @@ import { AuthContext } from "@/app/utils/authContext";
 import { useRouter } from "next/navigation";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "@/app/styles/experienceAdd.scss";
 import "@/app/styles/form.scss";
 
 const ExperienceAddForm = () => {

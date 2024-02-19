@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import ExperienceUpdateForm from "./experienceUpdateForm";
 import { useRouter, notFound } from "next/navigation";
 import { getExperience, updateExperience } from "@/app/utils/api";
+import "@/app/styles/experienceAddEdit.scss";
 
 const EditExperiencePage = ({ searchParams }) => {
   const router = useRouter();
@@ -89,7 +90,7 @@ const EditExperiencePage = ({ searchParams }) => {
   }
 
   return (
-    <div>
+    <div className="edit-experience">
       <h1>Modifier l'expérience</h1>
       <Formik
         initialValues={initialValues}

@@ -2,13 +2,14 @@
 
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import * as Yup from "yup";
-import "../../styles/experiencePage.scss";
+import "@/app/styles/experiencePage.scss";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/app/utils/authContext";
 import { useRouter } from "next/navigation";
 import "react-datepicker/dist/react-datepicker.css";
 import { addExperience } from "@/app/utils/api";
 import ExperienceAddForm from "./experienceAddForm";
+import "@/app/styles/experienceAddEdit.scss";
 
 const ExperienceAdd = () => {
   const router = useRouter();
