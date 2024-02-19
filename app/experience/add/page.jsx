@@ -44,7 +44,7 @@ const ExperienceAdd = () => {
     endDate: Yup.date(),
     workMode: Yup.string().required("Mode de travail requis"),
     abroad: Yup.boolean(),
-    country: Yup.string().required("Pays"),
+    country: Yup.string().required("Pays requis"),
     city: Yup.string().required("Ville requise"),
     address: "",
     paid: Yup.boolean().required("Statut de rémunération requis"),
