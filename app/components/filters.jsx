@@ -19,6 +19,14 @@ export default function Filters({ onFiltersChange }) {
     onFiltersChange(filters);
   }, [filterType, filterDomain, filterPaid, filterAbroad, filterWorkMode]);
 
+  const resetFilters = () => {
+    setFilterType("all");
+    setFilterDomain("all");
+    setFilterPaid("all");
+    setFilterAbroad("all");
+    setFilterWorkMode("all");
+  };
+
   return (
     <div className="search-filters">
       {/* TYPE */}
@@ -86,6 +94,11 @@ export default function Filters({ onFiltersChange }) {
           <option value="hybrid">Hybride</option>
         </select>
       </div>
+
+      {/* RESET BUTTON */}
+      <button class="search-filters__reset" onClick={resetFilters}>
+        Réinitialiser les filtres
+      </button>
     </div>
   );
 }
