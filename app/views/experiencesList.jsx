@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import "../styles/experiencesList.scss";
-import { translateAttribute } from "../utils/functions";
+import { translate } from "../utils/functions";
 
 export default function ExperienceList({ experiences }) {
   return (
@@ -16,7 +16,7 @@ export default function ExperienceList({ experiences }) {
                   {"IMAC "}
                   {experience.attributes.author.data.attributes.graduation_year}
                   <br />
-                  {translateAttribute("type", experience.attributes.type)}
+                  {translate("type", experience.attributes.type)}
                 </span>
               </div>
               <div className="content">

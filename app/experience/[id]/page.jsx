@@ -6,7 +6,7 @@ import "../../styles/experiencePage.scss";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/app/utils/authContext";
-import { changeDateFormat, translateAttribute } from "@/app/utils/functions";
+import { changeDateFormat, translate } from "@/app/utils/functions";
 import Link from "next/link";
 import {
   HiArrowNarrowLeft,
@@ -65,10 +65,10 @@ export default function ExperienceDetails({ params }) {
       <div className="cards">
         <div className="block block-1">
           <HiBriefcase className="block-icon" />
-          <p>{translateAttribute("type", experience.attributes.type)}</p>
-          <p>{translateAttribute("mode", experience.attributes.work_mode)}</p>
+          <p>{translate("type", experience.attributes.type)}</p>
+          <p>{translate("mode", experience.attributes.work_mode)}</p>
           <p>
-            {translateAttribute("paid", experience.attributes.paid)}{" "}
+            {translate("paid", experience.attributes.paid)}{" "}
             {experience.attributes.paid &&
               experience.attributes.compensation && (
                 <span>
@@ -77,7 +77,7 @@ export default function ExperienceDetails({ params }) {
                 </span>
               )}
           </p>
-          <p>{translateAttribute("domain", experience.attributes.domain)}</p>
+          <p>{translate("domain", experience.attributes.domain)}</p>
         </div>
         <div className="block-2">
           <div className="block location">

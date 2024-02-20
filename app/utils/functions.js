@@ -7,12 +7,12 @@ export function calcDuration(date1, date2) {
   return Math.floor(weekDuration);
 }
 
-export function translateAttribute(attributeName, attributeValue) {
-  if (attributeValue == "other") return "Autre";
+export function translate(name, value) {
+  if (value == "other") return "Autre";
 
-  switch (attributeName) {
+  switch (name) {
     case "type":
-      switch (attributeValue) {
+      switch (value) {
         case "internship":
           return "Stage";
         case "job":
@@ -21,7 +21,7 @@ export function translateAttribute(attributeName, attributeValue) {
           return "Autre";
       }
     case "domain":
-      switch (attributeValue) {
+      switch (value) {
         case "audiovisual":
           return "Audiovisuel";
         case "graphic-design":
@@ -36,7 +36,7 @@ export function translateAttribute(attributeName, attributeValue) {
           return "Autre";
       }
     case "mode":
-      switch (attributeValue) {
+      switch (value) {
         case "remote":
           return "Distanciel";
         case "on_site":
@@ -45,18 +45,27 @@ export function translateAttribute(attributeName, attributeValue) {
           return "Hybride";
       }
     case "paid":
-      switch (attributeValue) {
+      switch (value) {
         case true:
           return "Rémunérée";
         case false:
           return "Non-rémunérée";
       }
     case "recommended":
-      switch (attributeValue) {
+      switch (value) {
         case true:
           return "Recommandée";
         case false:
           return "Non-recommandée";
+      }
+    case "error":
+      switch (value) {
+        case "Email or Username are already taken":
+          return "Email déjà utilisé";
+        case "password must be at least 6 characters":
+          return "Le mot de passe doit faire au moins 6 caractères";
+        case "Invalid identifier or password":
+          return "Email ou mot de passe incorrect";
       }
   }
 }
