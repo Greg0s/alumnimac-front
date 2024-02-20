@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "@/app/styles/form.scss";
+import { descrPlaceholder } from "@/app/utils/functions";
 
 const ExperienceAddForm = () => {
   const router = useRouter();
@@ -76,6 +77,7 @@ const ExperienceAddForm = () => {
               selected={field.value}
               onChange={(date) => form.setFieldValue("startDate", date)}
               dateFormat="dd/MM/yyyy"
+              placeholderText="Ex : 06/06/2023"
             />
           )}
         </Field>
@@ -99,6 +101,7 @@ const ExperienceAddForm = () => {
                 onChange={(date) => form.setFieldValue("endDate", date)}
                 dateFormat="dd/MM/yyyy"
                 disabled={form.values.ongoing}
+                placeholderText="Ex : 11/08/2023"
               />
             )}
           </Field>
@@ -218,7 +221,12 @@ const ExperienceAddForm = () => {
       </div>
       {/* DESCRIPTION */}
       <div className="form__field form__field--textarea">
-        <label>Description</label> <Field as="textarea" name="description" />
+        <label>Description</label>{" "}
+        <Field
+          as="textarea"
+          name="description"
+          placeholder={descrPlaceholder}
+        />
       </div>
       <button className="btn btn--primary" type="submit">
         Valider
