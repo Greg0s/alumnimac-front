@@ -3,17 +3,20 @@ import * as Yup from "yup";
 
 import { getMe, signIn } from "../utils/api";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../utils/authContext";
 
 import { useRouter } from "next/navigation";
 
 import "@/app/styles/form.scss";
+import { translate } from "../utils/functions";
 
 const SignInForm = () => {
   const router = useRouter();
 
   const { setAuthState, setCurrentUser } = useContext(AuthContext);
+
+  const [serverError, setServerError] = useState(null);
 
   const initialValues = {
     email: "",
@@ -29,22 +32,21 @@ const SignInForm = () => {
 
   const handleSubmit = async (values) => {
     signIn(values.email, values.password)
-      .then((userCredential) => {
-        setAuthState(userCredential.jwt);
-        localStorage.setItem("token", userCredential.jwt);
-        localStorage.setItem("userId", userCredential.user.id);
-        router.push("/");
-      })
-      .finally(() => {
-        getCurrentUserData();
+      .then(async (userCredential) => {
+        if (userCredential) {
+          setAuthState(userCredential.jwt);
+          localStorage.setItem("token", userCredential.jwt);
+          localStorage.setItem("userId", userCredential.user.id);
+          setCurrentUser(await getMe());
+          router.push("/");
+        }
       })
       .catch((error) => {
         console.log(error);
+        setServerError(
+          error || "Une erreur s'est produite lors de l'inscription."
+        );
       });
-  };
-
-  const getCurrentUserData = async () => {
-    setCurrentUser(await getMe());
   };
 
   return (
@@ -72,6 +74,11 @@ const SignInForm = () => {
           />
           <Field type="password" name="password" />
         </div>
+
+        {serverError && (
+          <div className="form__error">{translate("error", serverError)}</div>
+        )}
+
         <button className="btn btn--primary" type="submit">
           Se connecter
         </button>

@@ -44,6 +44,12 @@
       flex: 0 0 100%;
     }
   }
+
+  &__error {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--red);
+  }
 }
 
 button[type="submit"] {

@@ -4,8 +4,12 @@ import * as Yup from "yup";
 import { signUp } from "../utils/api";
 
 import "@/app/styles/form.scss";
+import { useState } from "react";
+import { translate } from "../utils/functions";
 
 const SignUpForm = () => {
+  const [serverError, setServerError] = useState(null);
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -33,18 +37,18 @@ const SignUpForm = () => {
       values.password
     )
       .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .finally(() => {
-        getCurrentUserData();
+        if (userCredential) {
+          console.log(userCredential);
+          setServerError(null);
+          window.location.reload();
+        }
       })
       .catch((error) => {
         console.log(error);
+        setServerError(
+          error || "Une erreur s'est produite lors de l'inscription."
+        );
       });
-  };
-
-  const getCurrentUserData = async () => {
-    setCurrentUser(await getMe());
   };
 
   return (
@@ -99,6 +103,11 @@ const SignUpForm = () => {
           />
           <Field type="password" name="password" />
         </div>
+
+        {serverError && (
+          <div className="form__error">{translate("error", serverError)}</div>
+        )}
+
         <button className="btn btn--primary" type="submit">
           S'inscrire
         </button>

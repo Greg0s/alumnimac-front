@@ -116,7 +116,7 @@ function setExperienceData(experience) {
     _duration = calcDuration(experience.startDate, experience.endDate);
   }
 
-  let _compensation = 0;
+  let _compensation = null;
   if (experience.paid) _compensation = experience.compensation;
 
   const data = {
@@ -170,7 +170,7 @@ export async function signUp(
     return response.data;
   } catch (error) {
     console.log("Error while retrieving data: ", error);
-    return null;
+    throw error.response.data.error.message;
   }
 }
 
@@ -190,7 +190,7 @@ export async function signIn(_email, _password) {
     return response.data;
   } catch (error) {
     console.log("Error while retrieving data: ", error);
-    return null;
+    throw error.response.data.error.message;
   }
 }
 
