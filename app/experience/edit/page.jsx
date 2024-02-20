@@ -99,6 +99,14 @@ const EditExperiencePage = ({ searchParams }) => {
       >
         <ExperienceUpdateForm />
       </Formik>
+      <button
+        onClick={() => {
+          router.push("/experience/" + searchParams.id);
+        }}
+        className="btn btn--secondary"
+      >
+        Annuler
+      </button>
     </div>
   );
 };
