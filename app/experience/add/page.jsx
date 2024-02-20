@@ -30,7 +30,7 @@ const ExperienceAdd = () => {
     city: "",
     address: "",
     paid: false,
-    compensation: 0,
+    compensation: null,
     domain: "",
     not_recommended: false,
     description: "",

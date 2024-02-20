@@ -121,7 +121,7 @@ const ExperienceUpdateForm = () => {
         <Field as="select" name="workMode">
           <option value="">Choisir un mode</option>
           <option value="on_site">Présentiel</option>
-          <option value="remote">Distantiel</option>
+          <option value="remote">Distanciel</option>
           <option value="hybrid">Hybride</option>
         </Field>
       </div>
@@ -179,12 +179,7 @@ const ExperienceUpdateForm = () => {
             name="compensation"
             component="div"
           />
-          <Field
-            type="number"
-            name="compensation"
-            placeholder="Ex : 600"
-            // disabled={values.paid}
-          />
+          <Field type="number" name="compensation" placeholder="Ex : 600" />
         </div>
       )}
       {/* DOMAIN */}
