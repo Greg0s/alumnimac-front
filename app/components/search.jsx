@@ -11,11 +11,11 @@ export default function Search() {
   const { replace } = useRouter();
 
   const placeholders = [
-    "Développeur web Michelin Clermont-Ferrand",
-    "Chef de projet Espagne",
-    "Monteur Paris",
-    "Matthieu Chiama",
-    "Programmation C++",
+    "un job",
+    "une entreprise",
+    "une ville",
+    "un pays",
+    "un étudiant",
   ];
   const [currentPlaceholder, setCurrentPlaceholder] = useState(placeholders[0]);
 
@@ -47,7 +47,7 @@ export default function Search() {
       <input
         className="search__input"
         type="text"
-        placeholder={currentPlaceholder}
+        placeholder={"Recherche " + currentPlaceholder}
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
