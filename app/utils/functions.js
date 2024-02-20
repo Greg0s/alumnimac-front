@@ -47,9 +47,9 @@ export function translate(name, value) {
     case "paid":
       switch (value) {
         case true:
-          return "Rémunérée";
+          return "Rémunéré";
         case false:
-          return "Non-rémunérée";
+          return "Non-rémunéré";
       }
     case "recommended":
       switch (value) {
