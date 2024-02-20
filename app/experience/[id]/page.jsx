@@ -46,7 +46,6 @@ export default function ExperienceDetails({ params }) {
   if (!experience) {
     return <p>Pas d'expérience</p>;
   }
-
   const author = experience.attributes.author.data;
   let isAuthor;
 
@@ -59,7 +58,12 @@ export default function ExperienceDetails({ params }) {
         <HiArrowNarrowLeft />
       </Link>
       <div className="title">
-        <h1>{experience.attributes.position}</h1>
+        <h1>
+          {experience.attributes.position}{" "}
+          {experience.attributes.not_recommended && (
+            <span title="Labelisée La Baleine">🐳</span>
+          )}
+        </h1>
         <p className="company">{experience.attributes.company}</p>
       </div>
       <div className="cards">
@@ -70,7 +74,7 @@ export default function ExperienceDetails({ params }) {
           <p>
             {translate("paid", experience.attributes.paid)}{" "}
             {experience.attributes.paid &&
-              experience.attributes.compensation && (
+              experience.attributes.compensation != -1 && (
                 <span>
                   {experience.attributes.compensation}
                   {"€/mois"}
