@@ -90,13 +90,13 @@ export default function Filters({ onFiltersChange }) {
         >
           <option value="all">Tout mode de travail</option>
           <option value="on_site">Présentiel</option>
-          <option value="remote">Distantiel</option>
+          <option value="remote">Distanciel</option>
           <option value="hybrid">Hybride</option>
         </select>
       </div>
 
       {/* RESET BUTTON */}
-      <button class="search-filters__reset" onClick={resetFilters}>
+      <button className="search-filters__reset" onClick={resetFilters}>
         Réinitialiser
       </button>
     </div>
