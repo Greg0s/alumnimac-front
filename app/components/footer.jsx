@@ -6,7 +6,7 @@ import "@/app/styles/footer.scss";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer title="Un soucis ? Une question ? Contacte moi !">
       <p>
         <span>Par </span>
         <Link target="_blank" href="https://gregoiretinn.es">
