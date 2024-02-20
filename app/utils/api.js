@@ -116,8 +116,9 @@ function setExperienceData(experience) {
     _duration = calcDuration(experience.startDate, experience.endDate);
   }
 
-  let _compensation = null;
-  if (experience.paid) _compensation = experience.compensation;
+  let _compensation = -1;
+  if (experience.paid && experience.compensation)
+    _compensation = experience.compensation;
 
   const data = {
     data: {

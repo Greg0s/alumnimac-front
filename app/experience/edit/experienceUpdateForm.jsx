@@ -7,6 +7,7 @@ import { AuthContext } from "@/app/utils/authContext";
 import { useRouter } from "next/navigation";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { descrPlaceholder } from "@/app/utils/functions";
 
 const ExperienceUpdateForm = () => {
   const router = useRouter();
@@ -212,7 +213,12 @@ const ExperienceUpdateForm = () => {
       </div>
       {/* DESCRIPTION */}
       <div className="form__field form__field--textarea">
-        <label>Description</label> <Field as="textarea" name="description" />
+        <label>Description</label>
+        <Field
+          as="textarea"
+          name="description"
+          placeholder={descrPlaceholder}
+        />
       </div>
       <button className="btn btn--primary" type="submit">
         Valider
