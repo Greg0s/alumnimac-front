@@ -122,7 +122,7 @@ const ExperienceAddForm = () => {
         <Field as="select" name="workMode">
           <option value="">Choisir un mode</option>
           <option value="on_site">Présentiel</option>
-          <option value="remote">Distantiel</option>
+          <option value="remote">Distanciel</option>
           <option value="hybrid">Hybride</option>
         </Field>
       </div>
