@@ -78,3 +78,6 @@ export function changeDateFormat(date) {
 
   return `${day}/${month}/${year}`;
 }
+
+export const descrPlaceholder =
+  "Tu peux décrire le travail, les technos et outils utilisés, l'ambiance... \nDans le cas d'une mauvaise expérience, nous te conseillons de rester courtois vis à vis de ton entreprise pour éviter tout problème.";
