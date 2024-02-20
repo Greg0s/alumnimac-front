@@ -11,11 +11,11 @@ import { AuthContext } from "../utils/authContext";
 import useRenewAccessToken from "../utils/useRenewAccessToken";
 
 const Navbar = () => {
-  const { authState, setAuthState } = useContext(AuthContext);
+  const { authState, setAuthState, setCurrentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) useRenewAccessToken(authState, setAuthState);
+    if (token) useRenewAccessToken(authState, setAuthState, setCurrentUser);
   }, []);
 
   return (
