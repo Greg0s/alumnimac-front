@@ -40,7 +40,7 @@ mobile first
 @media screen and (min-width: 768px) {
   :root {
     --content-width: 65vw;
-    --max-content-width: 38.4rem;
+    --max-content-width: 37rem;
   }
 }
 
@@ -185,7 +185,7 @@ input[type="checkbox"] {
 }
 
 select {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: var(--radius-s);
 
   background-color: var(--green);
