@@ -29,7 +29,7 @@ const axiosInstancePublic = axios.create({
 export async function getExperiences() {
   try {
     const response = await axiosInstancePublic.get(
-      "/experiences?populate=author"
+      "/experiences?populate=author&randomSort=true"
     );
 
     if (response.status !== 200) {
