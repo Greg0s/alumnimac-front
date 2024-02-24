@@ -66,7 +66,7 @@ export default function Filters({ onFiltersChange }) {
         >
           <option value="all">Rémunération indifférente</option>
           <option value="true">Rémunérée</option>
-          <option value="false">Non-rémunérée</option>
+          <option value="false">Non-rémunérée, N/A</option>
         </select>
       </div>
 
