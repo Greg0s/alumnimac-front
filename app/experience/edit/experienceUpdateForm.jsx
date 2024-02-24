@@ -2,6 +2,7 @@
 
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import "../../styles/experiencePage.scss";
+import "@/app/styles/form.scss";
 import { useContext } from "react";
 import { AuthContext } from "@/app/utils/authContext";
 import { useRouter } from "next/navigation";
@@ -22,7 +23,7 @@ const ExperienceUpdateForm = () => {
     <Form className="form">
       {/* POSITION */}
       <div className="form__field">
-        <label>Poste occupé</label>
+        <label>Poste occupé *</label>
         <ErrorMessage
           className="form__field__error"
           name="position"
@@ -36,7 +37,7 @@ const ExperienceUpdateForm = () => {
       </div>
       {/* COMPANY */}
       <div className="form__field">
-        <label>Entreprise</label>
+        <label>Entreprise *</label>
         <ErrorMessage
           className="form__field__error"
           name="company"
@@ -46,7 +47,7 @@ const ExperienceUpdateForm = () => {
       </div>
       {/* TYPE */}
       <div className="form__field form__field--select">
-        <label>Type</label>
+        <label>Type *</label>
         <ErrorMessage
           className="form__field__error"
           name="type"
@@ -62,7 +63,7 @@ const ExperienceUpdateForm = () => {
       </div>
       {/* START DATE */}
       <div className="form__field">
-        <label>Date de début</label>
+        <label>Date de début *</label>
         <ErrorMessage
           className="form__field__error"
           name="startDate"
@@ -113,7 +114,7 @@ const ExperienceUpdateForm = () => {
       </div>
       {/* WORK MODE */}
       <div className="form__field">
-        <label>Mode de travail</label>
+        <label>Mode de travail *</label>
         <ErrorMessage
           className="form__field__error"
           name="workMode"
@@ -135,7 +136,7 @@ const ExperienceUpdateForm = () => {
       </div>
       {/* COUNTRY */}
       <div className="form__field">
-        <label>Pays</label>
+        <label>Pays *</label>
         <ErrorMessage
           className="form__field__error"
           name="country"
@@ -145,7 +146,7 @@ const ExperienceUpdateForm = () => {
       </div>
       {/* CITY */}
       <div className="form__field">
-        <label>Ville</label>
+        <label>Ville *</label>
         <ErrorMessage
           className="form__field__error"
           name="city"
@@ -185,7 +186,7 @@ const ExperienceUpdateForm = () => {
       )}
       {/* DOMAIN */}
       <div className="form__field">
-        <label>Domaine</label>
+        <label>Domaine *</label>
         <ErrorMessage
           className="form__field__error"
           name="domain"

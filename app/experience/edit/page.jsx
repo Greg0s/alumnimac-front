@@ -36,6 +36,9 @@ const EditExperiencePage = ({ searchParams }) => {
     if (experience.end_date) endDate = new Date(experience.end_date);
     else endDate = "";
 
+    let compensation = experience.compensation;
+    if (experience.compensation == -1) compensation = "";
+
     setInitialValues({
       position: experience.position,
       type: experience.type,
@@ -49,7 +52,7 @@ const EditExperiencePage = ({ searchParams }) => {
       city: experience.city,
       address: experience.address,
       paid: experience.paid,
-      compensation: experience.compensation,
+      compensation: compensation,
       domain: experience.domain,
       not_recommended: experience.not_recommended,
       description: experience.description,
@@ -91,7 +94,10 @@ const EditExperiencePage = ({ searchParams }) => {
 
   return (
     <div className="edit-experience">
-      <h1>Modifier l'expérience</h1>
+      <div className="edit-experience__header">
+        <h1>Modifier l'expérience</h1>
+        <p>* champs obligatoires</p>
+      </div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

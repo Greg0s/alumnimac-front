@@ -67,7 +67,10 @@ const ExperienceAdd = () => {
 
   return (
     <div className="add-experience">
-      <h1>Ajouter une expérience</h1>
+      <div className="add-experience__header">
+        <h1>Ajouter une expérience</h1>
+        <p>* champs obligatoires</p>
+      </div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
