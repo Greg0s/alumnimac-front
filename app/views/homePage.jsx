@@ -61,7 +61,7 @@ export default function Page({ searchParams, experiences }) {
 
 function experienceMatchesSearchTerm(experience, searchTerm) {
   experience = experience.attributes;
-  const { position, company, city, country } = experience;
+  const { position, company, city, country, description } = experience;
   const { first_name, last_name } = experience.author.data.attributes;
   const normalizedSearchTerm = searchTerm.toLowerCase();
 
@@ -71,7 +71,8 @@ function experienceMatchesSearchTerm(experience, searchTerm) {
     formatText(city).includes(normalizedSearchTerm) ||
     formatText(country).includes(normalizedSearchTerm) ||
     formatText(first_name).includes(normalizedSearchTerm) ||
-    formatText(last_name).includes(normalizedSearchTerm)
+    formatText(last_name).includes(normalizedSearchTerm) ||
+    formatText(description).includes(normalizedSearchTerm)
   );
 }
 
