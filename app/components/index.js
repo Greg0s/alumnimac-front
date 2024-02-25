@@ -5,3 +5,4 @@ export { AddButton as AddButton } from "./addButton";
 export { Footer as Footer } from "./footer";
 export { Navbar as Navbar } from "./navbar";
 export { Search as Search } from "./search";
+export { ExperienceAddEditForm as ExperienceAddEditForm } from "./experienceAddEditForm";

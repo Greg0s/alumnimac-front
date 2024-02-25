@@ -10,7 +10,7 @@ import { AuthContext } from "@/context/authContext";
 // API
 import { addExperience } from "@/utils";
 // Components
-import { ExperienceAddForm } from "./";
+import { ExperienceAddEditForm } from "@/components";
 // Style
 import "@/styles/experienceAddEdit.scss";
 
@@ -83,7 +83,7 @@ export default function ExperienceAdd() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <ExperienceAddForm />
+        <ExperienceAddEditForm />
       </Formik>
     </div>
   );

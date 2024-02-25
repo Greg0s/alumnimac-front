@@ -14,7 +14,7 @@ import { descrPlaceholder } from "@/utils/functions";
 // Style
 import "@/styles/form.scss";
 
-export function ExperienceAddForm() {
+export function ExperienceAddEditForm() {
   const router = useRouter();
   const { authState } = useContext(AuthContext);
 

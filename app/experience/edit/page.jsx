@@ -8,7 +8,7 @@ import { Formik } from "formik";
 // API
 import { getExperience, updateExperience } from "@/utils/";
 // Components
-import { ExperienceUpdateForm } from "./";
+import { ExperienceAddEditForm } from "@/components";
 // Style
 import "@/styles/experienceAddEdit.scss";
 
@@ -107,7 +107,7 @@ export default function EditExperiencePage({ searchParams }) {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <ExperienceUpdateForm />
+        <ExperienceAddEditForm />
       </Formik>
       <button
         onClick={() => {
