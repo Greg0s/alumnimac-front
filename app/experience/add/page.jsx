@@ -32,7 +32,7 @@ const ExperienceAdd = () => {
     paid: false,
     compensation: "",
     domain: "",
-    not_recommended: false,
+    notRecommended: false,
     description: "",
   };
 
@@ -51,11 +51,15 @@ const ExperienceAdd = () => {
     paid: Yup.boolean().required("Statut de rémunération requis"),
     compensation: Yup.number(),
     domain: Yup.string().required("Domaine requis"),
-    not_recommended: Yup.boolean(),
+    notRecommended: Yup.boolean(),
     description: Yup.string(),
   });
 
   const handleSubmit = async (values) => {
+    // to avoid timezone problems
+    values.startDate.setHours(12, 0, 0, 0);
+    values.endDate.setHours(12, 0, 0, 0);
+
     addExperience(values)
       .then(() => {
         router.push("/");

@@ -75,7 +75,9 @@ const ExperienceAddForm = () => {
               wrapperClassName="date-picker"
               id="datePicker"
               selected={field.value}
-              onChange={(date) => form.setFieldValue("startDate", date)}
+              onChange={(date) =>
+                form.setFieldValue("startDate", new Date(date))
+              }
               dateFormat="dd/MM/yyyy"
               placeholderText="Ex : 06/06/2023"
             />
@@ -211,7 +213,7 @@ const ExperienceAddForm = () => {
       </div>
       {/* RECOMMENDED? */}
       <div className="form__field form__field--checkbox">
-        <Field type="checkbox" name="not_recommended" />{" "}
+        <Field type="checkbox" name="notRecommended" />{" "}
         <label>Je ne recommande pas cette expérience</label>
         <ErrorMessage
           className="form__field__error"

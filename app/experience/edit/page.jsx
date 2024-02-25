@@ -54,7 +54,7 @@ const EditExperiencePage = ({ searchParams }) => {
       paid: experience.paid,
       compensation: compensation,
       domain: experience.domain,
-      not_recommended: experience.not_recommended,
+      notRecommended: experience.notRecommended,
       description: experience.description,
     });
   }
@@ -74,7 +74,7 @@ const EditExperiencePage = ({ searchParams }) => {
     paid: Yup.boolean().required("Statut de rémunération requis"),
     compensation: Yup.number(),
     domain: Yup.string().required("Domaine requis"),
-    not_recommended: Yup.boolean(),
+    notRecommended: Yup.boolean(),
     description: Yup.string(),
   });
 

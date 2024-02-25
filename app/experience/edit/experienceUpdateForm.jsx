@@ -204,7 +204,7 @@ const ExperienceUpdateForm = () => {
       </div>
       {/* RECOMMENDED? */}
       <div className="form__field form__field--checkbox">
-        <Field type="checkbox" name="not_recommended" />{" "}
+        <Field type="checkbox" name="notRecommended" />{" "}
         <label>Je ne recommande pas cette expérience</label>
         <ErrorMessage
           className="form__field__error"
