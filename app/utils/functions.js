@@ -1,10 +1,16 @@
-export function calcDuration(date1, date2) {
-  const startDate = new Date(date1);
-  const endDate = new Date(date2);
+export function calcDuration(startDate, endDate) {
+  if (!(startDate instanceof Date)) {
+    startDate = new Date(startDate);
+  }
+  if (!(endDate instanceof Date)) {
+    endDate = new Date(endDate);
+  }
 
-  const weekDuration = (endDate - startDate) / (1000 * 60 * 60 * 24 * 7);
+  let monthDuration =
+    (endDate.getTime() - startDate.getTime()) /
+    (1000 * 60 * 60 * 24 * 30.436875);
 
-  return Math.floor(weekDuration);
+  return Math.round(monthDuration);
 }
 
 export function translate(name, value) {
