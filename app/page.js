@@ -1,5 +1,5 @@
-import { getExperiences } from "./utils/api";
-import HomePage from "./views/homePage";
+import { getExperiences } from "./utils";
+import { HomePage } from "@/views/";
 
 export default async function Home({ searchParams }) {
   let experiences = await getExperiences();

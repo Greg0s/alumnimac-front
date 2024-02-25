@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/navigation";
+// Context
+import { AuthContext } from "@/context/";
 
-import { useContext } from "react";
-import { AuthContext } from "../utils/authContext";
-
-const SignOut = () => {
+export function SignOut() {
   const router = useRouter();
 
   const { setAuthState, setCurrentUser } = useContext(AuthContext);
@@ -26,6 +25,4 @@ const SignOut = () => {
       Se déconnecter
     </button>
   );
-};
-
-export default SignOut;
+}

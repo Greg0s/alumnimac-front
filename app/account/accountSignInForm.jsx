@@ -1,17 +1,18 @@
+import { useContext, useState } from "react";
+import { useRouter } from "next/navigation";
+// Form dependencies
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+// API
+import { getMe, signIn } from "@/utils";
+// Context
+import { AuthContext } from "@/context";
+// Utils
+import { translate } from "@/utils/functions";
+// Style
+import "@/styles/form.scss";
 
-import { getMe, signIn } from "../utils/api";
-
-import { useContext, useState } from "react";
-import { AuthContext } from "../utils/authContext";
-
-import { useRouter } from "next/navigation";
-
-import "@/app/styles/form.scss";
-import { translate } from "../utils/functions";
-
-const SignInForm = () => {
+export function SignInForm() {
   const router = useRouter();
 
   const { setAuthState, setCurrentUser } = useContext(AuthContext);
@@ -85,6 +86,6 @@ const SignInForm = () => {
       </Form>
     </Formik>
   );
-};
+}
 
 export default SignInForm;

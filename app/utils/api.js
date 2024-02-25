@@ -1,22 +1,14 @@
 import { notFound } from "next/navigation";
 import { apiToken } from "./apiToken";
-import { calcDuration } from "./functions";
+import { calcDuration } from "./";
 
 const axios = require("axios");
 
-axios.defaults.withCredentials = true;
+axios.default.withCredentials = true;
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 // Axios config
-const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  headers: {
-    Authorization: `bearer ${apiToken}`,
-    "Content-Type": "application/json",
-  },
-});
-
 const axiosInstancePublic = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
@@ -158,6 +150,7 @@ export async function signUp(
   const data = {
     first_name: _firstName,
     last_name: _lastName,
+    graduation_year: _graduationYear,
     username: _email,
     email: _email,
     password: _password,

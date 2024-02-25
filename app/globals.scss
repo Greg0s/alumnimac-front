@@ -30,13 +30,6 @@ mobile first
   --font-size-p: 1rem;
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    --background: white;
-    --outline: #333;
-  }
-} */
-
 @media screen and (min-width: 768px) {
   :root {
     --content-width: 65vw;
@@ -89,6 +82,8 @@ body {
 a {
   color: var(--outline) !important;
 }
+
+// Btn
 
 .btn {
   padding: 1rem;
@@ -145,7 +140,7 @@ a {
   }
 }
 
-// inputs
+// Inputs
 
 input {
   width: 100%;

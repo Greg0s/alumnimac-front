@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
+// Context
+import { AuthContext } from "@/context/";
+// Style
+import "@/styles/accountInfos.scss";
+// Components
+import { SignOut } from "./";
 
-import { AuthContext } from "@/app/utils/authContext";
-
-import "@/app/styles/accountInfos.scss";
-
-import SignOut from "./accountInfosSignOut";
-
-export default function AccountInfos() {
+export function AccountInfos() {
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -22,18 +22,16 @@ export default function AccountInfos() {
               </p>
             </div>
             <div>
-              {" "}
               <h4>Promo</h4>
               <p>IMAC {currentUser.graduation_year}</p>
             </div>
             <div>
-              {" "}
               <h4>Email</h4>
               <p>{currentUser.email}</p>
             </div>
           </>
         )}
-        <SignOut />{" "}
+        <SignOut />
       </div>
     </>
   );

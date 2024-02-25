@@ -73,7 +73,7 @@ export default function ExperienceDetails({ params }) {
         </p>
       </div>
       <div className="experience-page__cards">
-        <div className="experience-page__cards__block experience-page__cards__block--work">
+        <div className="block block-1">
           <HiBriefcase className="block-icon" />
           <p>{translate("type", experience.attributes.type)}</p>
           <p>{translate("mode", experience.attributes.work_mode)}</p>
@@ -89,42 +89,41 @@ export default function ExperienceDetails({ params }) {
           </p>
           <p>{translate("domain", experience.attributes.domain)}</p>
         </div>
-
-        <div className="experience-page__cards__block experience-page__cards__block--location">
-          <HiLocationMarker className="block-icon" />
-          <p>
-            {experience.attributes.city}, {experience.attributes.country}
-          </p>
-          {experience.attributes.address && (
-            <p>{experience.attributes.address}</p>
-          )}
-        </div>
-        <div className="experience-page__cards__block experience-page__cards__block--name">
-          <HiUser className="block-icon" />
-          <p>
-            {author.attributes.first_name} {author.attributes.last_name}
-          </p>
-          <p>IMAC {author.attributes.graduation_year}</p>
-        </div>
-        <div className="experience-page__cards__block experience-page__cards__block--dates">
-          <HiClock className="block-icon" />
-
-          <p>
-            {changeDateFormat(experience.attributes.start_date)} {" - "}
-            {experience.attributes.end_date ? (
-              <span>
-                {changeDateFormat(experience.attributes.end_date)} {"("}
-                {experience.attributes.duration} {"mois)"}
-              </span>
-            ) : (
-              <span>Aujourd'hui (En cours)</span>
+        <div className="block-2">
+          <div className="block location">
+            <HiLocationMarker className="block-icon" />
+            <p>
+              {experience.attributes.city}, {experience.attributes.country}
+            </p>
+            {experience.attributes.address && (
+              <p>{experience.attributes.address}</p>
             )}
-          </p>
+          </div>
+          <div className="block name">
+            <HiUser className="block-icon" />
+            <p>
+              {author.attributes.first_name} {author.attributes.last_name}{" "}
+            </p>
+            <p>IMAC {author.attributes.graduation_year}</p>
+          </div>
+          <div className="block dates">
+            <HiClock className="block-icon" />
+
+            <p>
+              {changeDateFormat(experience.attributes.start_date)} {" - "}
+              {experience.attributes.end_date ? (
+                <span>
+                  {changeDateFormat(experience.attributes.end_date)} {"("}
+                  {experience.attributes.duration} {"mois)"}
+                </span>
+              ) : (
+                <span>Aujourd'hui (En cours)</span>
+              )}
+            </p>
+          </div>
         </div>
       </div>
-      <p className="experience-page__description">
-        {experience.attributes.description}
-      </p>
+      <p className="description">{experience.attributes.description}</p>
       {isAuthor && (
         <button className="btn btn--primary" onClick={handleEditClick}>
           Modifier l'expérience

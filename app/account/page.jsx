@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-
-import "@/app/styles/account.scss";
-
-import SignInForm from "./accountSignInForm";
-import SignUpForm from "./accountSignUpForm";
-import AccountInfos from "./accountInfos";
-
-import { useContext } from "react";
-import { AuthContext } from "../utils/authContext";
-import useRenewAccessToken from "../utils/useRenewAccessToken";
+import React, { useEffect, useState, useContext } from "react";
+// Context
+import { AuthContext } from "@/context/authContext";
+// Utils
+import { useRenewAccessToken } from "@/utils/";
+// Components
+import { AccountInfos, SignInForm, SignUpForm } from "./";
+// Style
+import "@/styles/account.scss";
 
 export default function Account() {
   const { authState, setAuthState, setCurrentUser } = useContext(AuthContext);
@@ -22,7 +20,7 @@ export default function Account() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) useRenewAccessToken(authState, setAuthState, setCurrentUser);
+    if (token) useRenewAccessToken(setAuthState, setCurrentUser);
   }, []);
 
   return (

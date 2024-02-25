@@ -1,7 +1,9 @@
+// Context
+import { AuthProvider } from "@/context";
+// Components
+import { Navbar, Footer } from "@/components/";
+// Style
 import "./globals.scss";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-import AuthProvider from "./utils/authContext";
 
 export const metadata = {
   title: "Alumnimac - Expériences professionnelles d'IMACs",

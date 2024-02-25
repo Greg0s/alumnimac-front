@@ -30,34 +30,29 @@
     gap: 1.5rem;
     flex-wrap: wrap;
 
-    &__block {
+    .block-1,
+    .location,
+    .name,
+    .dates {
       padding: 1.5rem;
       border-radius: var(--radius-m);
+    }
 
-      position: relative;
+    .block-1 {
+      border: solid 2px var(--blue);
+      flex: 0 0 100%;
 
       .block-icon {
-        position: absolute;
-        top: -0.75rem;
-
-        padding: 0 0.5rem;
-        width: fit-content;
-
-        font-size: 1.7rem;
-
-        background-color: var(--background);
+        color: var(--blue);
       }
+    }
 
-      &--work {
-        border: solid 2px var(--blue);
-        flex: 0 0 100%;
+    .block-2 {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
 
-        .block-icon {
-          color: var(--blue);
-        }
-      }
-
-      &--location {
+      .location {
         border: solid 2px var(--green);
         flex: 0 0 100%;
 
@@ -65,8 +60,7 @@
           color: var(--green);
         }
       }
-
-      &--name {
+      .name {
         border: solid 2px var(--grey);
         flex: 0 0 48%;
         flex: 0 0 100%;
@@ -75,8 +69,7 @@
           color: var(--grey);
         }
       }
-
-      &--dates {
+      .dates {
         flex: 0 0 100%;
         border: solid 2px var(--red);
 
@@ -87,7 +80,22 @@
     }
   }
 
-  &__description {
+  .block {
+    position: relative;
+    &-icon {
+      position: absolute;
+      top: -0.75rem;
+
+      padding: 0 0.5rem;
+      width: fit-content;
+
+      font-size: 1.7rem;
+
+      background-color: var(--background);
+    }
+  }
+
+  .description {
     white-space: pre-wrap;
     overflow-wrap: break-word;
   }
@@ -97,7 +105,7 @@
   .experience-page {
     position: relative;
 
-    &__back-arrow {
+    .back-arrow {
       position: absolute;
       top: 0.5rem;
       transform: translateX(-200%);
@@ -110,12 +118,12 @@
     }
 
     &__cards {
-      &__block {
-        &--name {
+      .block-2 {
+        .name {
           flex: 0 0 48%;
         }
 
-        &--location {
+        .location {
           flex: 0 0 47%;
         }
       }

@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
-
+// Icons
 import { FaDiscord, FaLinkedinIn } from "react-icons/fa";
-import "@/app/styles/footer.scss";
+// Style
+import "@/styles/footer.scss";
 
-const Footer = () => {
+export function Footer() {
   return (
     <footer title="Un soucis ? Une question ? Contacte moi !">
       <p>
@@ -29,6 +29,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -1,16 +1,20 @@
 "use client";
 
-import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
-
 import { useContext } from "react";
-import { AuthContext } from "@/app/utils/authContext";
 import { useRouter } from "next/navigation";
+// Form dependencies
+import { Form, Field, ErrorMessage, useFormikContext } from "formik";
+// Datepicker dependencies
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "@/app/styles/form.scss";
-import { descrPlaceholder } from "@/app/utils/functions";
+// Context
+import { AuthContext } from "@/context/authContext";
+// Utils
+import { descrPlaceholder } from "@/utils/functions";
+// Style
+import "@/styles/form.scss";
 
-const ExperienceAddForm = () => {
+export function ExperienceAddForm() {
   const router = useRouter();
   const { authState } = useContext(AuthContext);
 
@@ -185,12 +189,7 @@ const ExperienceAddForm = () => {
             name="compensation"
             component="div"
           />
-          <Field
-            type="number"
-            name="compensation"
-            placeholder="Ex : 600"
-            // disabled={values.paid}
-          />
+          <Field type="number" name="compensation" placeholder="Ex : 600" />
         </div>
       )}
       {/* DOMAIN */}
@@ -235,6 +234,4 @@ const ExperienceAddForm = () => {
       </button>
     </Form>
   );
-};
-
-export default ExperienceAddForm;
+}

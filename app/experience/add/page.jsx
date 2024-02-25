@@ -1,17 +1,20 @@
 "use client";
 
-import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
-import * as Yup from "yup";
-import "@/app/styles/experiencePage.scss";
-import { useContext, useState } from "react";
-import { AuthContext } from "@/app/utils/authContext";
+import { useContext } from "react";
 import { useRouter } from "next/navigation";
-import "react-datepicker/dist/react-datepicker.css";
-import { addExperience } from "@/app/utils/api";
-import ExperienceAddForm from "./experienceAddForm";
-import "@/app/styles/experienceAddEdit.scss";
+// Form dependencies
+import { Formik } from "formik";
+import * as Yup from "yup";
+// Context
+import { AuthContext } from "@/context/authContext";
+// API
+import { addExperience } from "@/utils";
+// Components
+import { ExperienceAddForm } from "./";
+// Style
+import "@/styles/experienceAddEdit.scss";
 
-const ExperienceAdd = () => {
+export default function ExperienceAdd() {
   const router = useRouter();
   const { authState } = useContext(AuthContext);
 
@@ -84,6 +87,4 @@ const ExperienceAdd = () => {
       </Formik>
     </div>
   );
-};
-
-export default ExperienceAdd;
+}

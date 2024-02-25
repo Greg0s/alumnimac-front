@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import ExperienceList from "./experiencesList";
-import Search from "../components/search";
-import Filters from "../components/filters";
+// Components
+import { ExperiencesList } from "./";
+import { Search, Filters, AddButton } from "@/components/";
+// Style
 import "app/styles/homePage.scss";
-import AddButton from "../components/addButton";
 
-export default function Page({ searchParams, experiences }) {
+export function HomePage({ searchParams, experiences }) {
   const [filters, setFilters] = useState("");
 
   let query = searchParams?.query || "";
@@ -53,7 +53,7 @@ export default function Page({ searchParams, experiences }) {
         <Search />
         <Filters onFiltersChange={handleFiltersChange} />
       </div>
-      <ExperienceList experiences={filteredExperiences} />
+      <ExperiencesList experiences={filteredExperiences} />
       <AddButton />
     </div>
   );

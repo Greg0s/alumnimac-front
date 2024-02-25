@@ -1,13 +1,15 @@
+import { useState } from "react";
+// Form dependencies
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+// API
+import { signUp } from "@/utils";
+// Utils
+import { translate } from "@/utils/functions";
+// Style
+import "@/styles/form.scss";
 
-import { signUp } from "../utils/api";
-
-import "@/app/styles/form.scss";
-import { useState } from "react";
-import { translate } from "../utils/functions";
-
-const SignUpForm = () => {
+export function SignUpForm() {
   const [serverError, setServerError] = useState(null);
 
   const initialValues = {
@@ -38,7 +40,6 @@ const SignUpForm = () => {
     )
       .then((userCredential) => {
         if (userCredential) {
-          console.log(userCredential);
           setServerError(null);
           window.location.reload();
         }
@@ -114,6 +115,6 @@ const SignUpForm = () => {
       </Form>
     </Formik>
   );
-};
+}
 
 export default SignUpForm;

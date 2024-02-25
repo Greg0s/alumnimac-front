@@ -1,14 +1,18 @@
 "use client";
 
-import * as Yup from "yup";
 import { useEffect, useState } from "react";
-import { Formik } from "formik";
-import ExperienceUpdateForm from "./experienceUpdateForm";
 import { useRouter, notFound } from "next/navigation";
-import { getExperience, updateExperience } from "@/app/utils/api";
-import "@/app/styles/experienceAddEdit.scss";
+// Form dependencies
+import * as Yup from "yup";
+import { Formik } from "formik";
+// API
+import { getExperience, updateExperience } from "@/utils/";
+// Components
+import { ExperienceUpdateForm } from "./";
+// Style
+import "@/styles/experienceAddEdit.scss";
 
-const EditExperiencePage = ({ searchParams }) => {
+export default function EditExperiencePage({ searchParams }) {
   const router = useRouter();
   const [initialValues, setInitialValues] = useState(null);
 
@@ -115,6 +119,4 @@ const EditExperiencePage = ({ searchParams }) => {
       </button>
     </div>
   );
-};
-
-export default EditExperiencePage;
+}

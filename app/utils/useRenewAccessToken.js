@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import { getMe, refreshToken } from "./api";
+import { getMe, refreshToken } from "@/utils/";
 
-const useRenewAccessToken = (authState, setAuthState, setCurrentUser) => {
+export const useRenewAccessToken = (setAuthState, setCurrentUser) => {
   const renewAccessToken = async () => {
     try {
       const response = await refreshToken();
@@ -16,5 +15,3 @@ const useRenewAccessToken = (authState, setAuthState, setCurrentUser) => {
 
   renewAccessToken();
 };
-
-export default useRenewAccessToken;

@@ -1,11 +1,12 @@
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+// Icons
 import { HiOutlineSearch } from "react-icons/hi";
+// Style
+import "@/styles/search.scss";
 
-import "app/styles/search.scss";
-
-export default function Search() {
+export function Search() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();

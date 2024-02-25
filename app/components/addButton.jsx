@@ -1,13 +1,13 @@
 "use client";
 
 import { useContext } from "react";
-import { AuthContext } from "../utils/authContext";
-
-import "../styles/addButton.scss";
-
 import Link from "next/link";
+// Context
+import { AuthContext } from "@/context/authContext";
+// Style
+import "@/styles/addButton.scss";
 
-const AddButton = () => {
+export function AddButton() {
   const { authState } = useContext(AuthContext);
 
   return (
@@ -19,6 +19,4 @@ const AddButton = () => {
       )}
     </>
   );
-};
-
-export default AddButton;
+}

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import "app/styles/filters.scss";
+// Style
+import "@/styles/filters.scss";
 
-export default function Filters({ onFiltersChange }) {
+export function Filters({ onFiltersChange }) {
   const [filterType, setFilterType] = useState("all");
   const [filterDomain, setFilterDomain] = useState("all");
   const [filterPaid, setFilterPaid] = useState("all");
