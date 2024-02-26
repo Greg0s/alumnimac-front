@@ -2,6 +2,9 @@
 
 > La plateforme pour parcourir les expériences professionnelles des IMACs
 
+Ce repo contient le front-end du projet.
+Retrouvez le repo back-end [ici](https://github.com/Greg0s/alumnimac-strapi/).
+
 ## Next.js
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
