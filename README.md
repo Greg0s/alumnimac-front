@@ -47,14 +47,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## API calls
 
-See [alumnimac-strapi repo](https://github.com/greg0s/alumnimac-strapi)
+Add the api token in /app/utils/apiToken.js as:
 
-```bash
-bun develop
-# or
-npm run dev
-# or
-pnpm develop
-# or
-yarn develop
+```javascript
+export const apiToken = ""
 ```
+
+Clone, install, and run [alumnimac-strapi repo](https://github.com/greg0s/alumnimac-strapi).
